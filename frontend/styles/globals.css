@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--color-text);
 }
 
 a {
@@ -30,7 +31,7 @@ h1, h2, h3, h4 {
 }
 
 :root {
-  -color-text: #1a3b70;
+  --color-text: #1a3b70;
   --color-text-meta: rgba(26, 59, 112, 0.6);
   --color-text-link: #1a3b70;
   --color-text-error: #C71B1B;
@@ -129,4 +130,70 @@ h1, h2, h3, h4 {
   --font-size-body-x-small: 12px;
   --line-height-body-x-small: 1.85;
   --payment-terms-background-color: #f5f5f5;
+  --max-width: 1440px;
+  --max-width-narrow: 747px;
+  --flyout-width: 640px;
+  --spacing-unit: 4px;
+  --spacing-unit-half: 2px;
+  --spacing-none: 0px;
+  --spacing-extra-small: calc(var(--spacing-unit) * 2);
+  --spacing-small: calc(var(--spacing-unit) * 3);
+  --spacing-medium: calc(var(--spacing-unit) * 5);
+  --spacing-medium-large: calc(var(--spacing-unit) * 7);
+  --spacing-large: calc(var(--spacing-unit) * 10);
+  --spacing-extra-large: calc(var(--spacing-unit) * 15);
+  --spacing-extra-extra-large: calc(var(--spacing-unit) * 20);
+  --spacing-extra-extra-extra-large: calc(var(--spacing-unit) * 25);
+  --box-shadow: 0px 4px 6px rgba(0, 0, 0, .06);
+  --z-index-bar: 300;
+  --z-index-header: 500;
+  --z-index-popup: 400;
+  --z-index-lightbox: 1100;
+  --z-index-modal: 1200;
+  --z-index-theme-editor-offset: 2000;
+  --space-outer: calc(var(--spacing-unit) * 20);
+}
+
+.section {
+  margin: 80px 0;
+  width: 100%;
+}
+
+.section__inner {
+  padding-right: 80px;
+  padding-left: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--max-width);
+}
+
+p {
+  margin: 0;
+}
+
+.ff-heading {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  font-style: var(--font-heading-style);
+  letter-spacing: var(--font-heading-base-letter-spacing);
+}
+
+.button {
+  cursor: pointer;
+  margin-top: 32px;
+  border-color: #1a3b70;
+  background-color: #00a7e1;
+  color: #ffffff;;
+  text-transform: none;
+  letter-spacing: .01em;
+  font-weight: 700;
+  border-radius: 48px;
+  transition: border-color .25s ease-in-out, background-color .25s ease-in-out, color .25s ease-in-out;
+  margin-right: auto;
+  padding: 18px 34px;
+}
+
+.button:hover {
+  border-color: #005b7b;
+  background-color: #005b7b;
 }
