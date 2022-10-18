@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_line_items",
+  "info": {
+    "singularName": "order-line-item",
+    "pluralName": "order-line-items",
+    "displayName": "OrderLineItem"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quality": {
+      "type": "integer"
+    },
+    "order": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::order.order",
+      "inversedBy": "order_line_items"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    }
+  }
+}
