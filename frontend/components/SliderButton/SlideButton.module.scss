@@ -1,0 +1,27 @@
+.button {
+    top: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    width: var(--button-size);
+    height: var(--button-size);
+    background-color: #fff;
+    border: 0;
+    border-radius: 50%;
+    box-shadow: var(--box-shadow);
+    color: var(--color-text);
+    transition: opacity .15s ease-in-out,margin .3s ease-in-out;
+    width: var(--button-size-large);
+    height: var(--button-size-large);
+    cursor: pointer;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}

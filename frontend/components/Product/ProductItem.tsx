@@ -27,17 +27,17 @@ export const ProductItem: React.FC<IProductItemProps> = ({
         </Link>
       </div>
       <div className={styles.productItemText}>
-        <h4 className={styles.productItemTitle}>
-            {name}
-        </h4>
-        <span className={styles.productDescription}>
-            {description}
-        </span>
+        <h4 className={styles.productItemTitle}>{name}</h4>
+        <span className={styles.productDescription}>{description}</span>
         <br />
-        <span className={styles.productPrice}>
-            {pricing}
-        </span>
+        <span className={styles.productPrice}>{pricing}</span>
       </div>
+      <input
+        type="submit"
+        name="add"
+        value="Add to cart"
+        className="button-primay "
+      />
     </div>
   );
 };

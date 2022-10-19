@@ -1,3 +1,6 @@
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
 html,
 body {
   padding: 0;
@@ -85,6 +88,8 @@ h1, h2, h3, h4 {
   --color-border-meta-popover: #8a909e;
   --button-style: none;
   --button-shape: 48px;
+  --button-size: 48px;
+  --button-size-large: 60px;
   --font-logo: "Nunito Sans", sans-serif;
   --font-logo-weight: 400;
   --font-logo-style: normal;
@@ -196,4 +201,20 @@ p {
 .button:hover {
   border-color: #005b7b;
   background-color: #005b7b;
+}
+
+.button-primay {
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: #1a3b70;
+  background-color: #fff;
+  color: #1a3b70;
+  text-transform: var(--button-style);
+  letter-spacing: .01em;
+  font-weight: var(--font-body-bold-weight);
+  border-radius: var(--button-shape);
+  transition: border-color .25s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;
+  padding: 16px 28px;
+  font-size: var(--font-size-body-small);
+  line-height: var(--line-height-body-small);
 }
