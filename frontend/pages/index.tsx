@@ -2,7 +2,11 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 
-import { Banner } from './Homepage/Banner/Banner'
+import { Banner } from './Homepage/Banner/Banner';
+import { NewProduct } from './Homepage/NewProduct/NewProduct';
+import { OurMission } from './Homepage/OurMission/OurMission';
+import { Categories } from './Homepage/Categories/Categories';
+import { DailyEssentials } from './Homepage/DailyEssentials/DailyEssentials';
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -16,6 +20,10 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <Banner />
+        <NewProduct />
+        <OurMission />
+        <Categories />
+        <DailyEssentials />
       </main>
 
       <footer className={styles.footer}>
