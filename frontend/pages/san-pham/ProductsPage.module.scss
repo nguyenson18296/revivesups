@@ -1,0 +1,57 @@
+.collectionSection {
+    margin-bottom: calc(var(--space-outer) * 2);
+}
+
+.collectionHeader {
+    margin-top: 100px;
+    margin-bottom: 0;
+}
+
+.collectionHeaderInner {
+    max-width: var(--max-width);
+    padding: 0 var(--space-outer);
+    margin: 0 auto;
+}
+
+.colectionHeader {
+    font-size: 40px;
+    line-height: 1.08;
+    font-family: var(--font-heading);
+    font-weight: var(--font-heading-weight);
+    font-style: var(--font-heading-style);
+    letter-spacing: var(--font-heading-base-letter-spacing);
+}
+
+.filterBar {
+    margin-bottom: var(--spacing-large);
+}
+
+.collectionContent {
+    margin-top: 80px;
+}
+
+.collectionFiltersContainer {
+    border-top: 1px solid var(--color-border);
+}
+
+.collectionProducts {
+    display: grid;
+    grid-column-gap: var(--spacing-large);
+    column-gap: var(--spacing-large);
+    grid-row-gap: var(--spacing-large);
+    row-gap: var(--spacing-large);
+    padding-top: var(--spacing-large);
+
+    @media (min-width: 60em) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (min-width: 45em) {
+        grid-row-gap: var(--spacing-extra-large);
+        row-gap: var(--spacing-extra-large);
+    }
+}
+
+.productItem {
+    position: relative;
+}

@@ -1,8 +1,9 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { BurgerMenu } from "../../../components/BurgerMenu/BurgerMenu";
+import { BurgerMenu } from "../../BurgerMenu/BurgerMenu";
 
 import headerLogo from "../../../assets/header-logo.png";
 import search from "../../../assets/search.png";
@@ -19,22 +20,12 @@ export const Header: React.FC = () => {
             <header className={styles.header}>
                 <div className={styles.innerHeader}>
                     <div className={styles.headerLeft}>
-                        {/* <div
-                            className={styles.burgerMenu}
-                            onClick={() => setIsOpenMenu(true)}
-                        >
-                            <Image src={burgerMenu} alt="burger-menu" className={styles.burgerMenuIcon} />
-                            <BurgerMenu
-                                isOpenMenu={isOpenMenu}
-                                onOpen={() => setIsOpenMenu(true)}
-                            />
-                        </div> */}
                         <BurgerMenu />
                     </div>
                     <div className={styles.headerCenter}>
-                        <Link href={"/"}>
+                        <a href="/">
                             <Image src={headerLogo} alt="header-logo" className={styles.headerLogo} height={38} width={160} />
-                        </Link>
+                        </a>
                     </div>
                     <div className={styles.headerRight}>
                         <a href="/search" className={styles.iconWrap}>

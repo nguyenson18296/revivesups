@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import {
   ProductItem,
   IProductItemProps,
-} from "../../../components/Product/ProductItem";
-import { SliderButton } from "../../../components/SliderButton/SliderButton";
+} from "../../Product/ProductItem";
+import { SliderButton } from "../../SliderButton/SliderButton";
 
 import product from "../../../assets/product.png";
 import styles from "./DailyEssentials.module.scss";

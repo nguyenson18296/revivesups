@@ -24,7 +24,7 @@ export const BurgerMenu: React.FC = ({
                         <a
                             id="home" 
                             className={cx("menu-item", styles.menuItem, styles.menuItemPrimary)}
-                            href="/"
+                            href="/san-pham/daily-essentials"
                         >
                             Shop Vitamins
                         </a>
