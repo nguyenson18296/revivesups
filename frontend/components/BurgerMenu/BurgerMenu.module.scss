@@ -1,0 +1,56 @@
+.slideMenuContent {
+    position: relative;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.drawerAllLinks {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-outer) 0;
+    background-color: var(--color-background-popover);
+}
+
+.drawerMenuItem {
+    list-style: none;
+    padding: 0;
+}
+
+.menuItem {
+    min-width: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 2px;
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    color: #1c2332;
+    margin-top: 12px;
+
+    &:hover {
+        opacity: 0.75;
+    }
+}
+
+.menuItemPrimary {
+    font-size: 30px;
+    line-height: 1.22;
+    
+}
+
+.menuItemPrimaryLast {
+    margin-bottom: 40px;
+}
+
+.menuItemSecondary {
+    font-size: var(--font-size-body-large);
+    line-height: var(--line-height-body-large);
+}
