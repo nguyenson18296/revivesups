@@ -54,6 +54,12 @@
       "type": "integer",
       "default": 0,
       "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
     }
   }
 }
