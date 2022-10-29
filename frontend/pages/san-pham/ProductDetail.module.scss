@@ -1,0 +1,111 @@
+.product {
+    padding: 0 var(--space-outer);
+    margin: var(--spacing-large) auto var(--spacing-small);
+    max-width: var(--max-width);
+
+    @media (min-width: 60em) {
+        margin-top: var(--spacing-extra-extra-large);
+        margin-bottom: calc(var(--spacing-extra-extra-large) * 2);
+    }
+}
+
+.productTop {
+    width: 100%;
+
+    @media (min-width: 60em) {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+}
+
+.productMediaContainer {
+    display: block;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+}
+
+.productImage {
+    border-radius: 15px;
+}
+
+.productDetail {
+    width: 100%;
+}
+
+.productMeta {
+    @media (min-width: 60em) {
+        margin-top: 0;
+        margin-left: var(--spacing-extra-extra-large);
+    }
+}
+
+.productName {
+    @media (min-width: 45em) {
+        font-size: var(--font-size-heading-1-base);
+        line-height: var(--line-height-heading-1-base);
+    }
+}
+
+.productBlockReviews {
+    margin-top: 10px;
+    .rating {
+        display: inline-block;
+        margin: 0;
+
+        .star:not(:first-child) {
+            margin-left: 3px !important;
+        }
+
+        .reviewSection {
+            margin-left: 10px;
+        }
+    }
+}
+
+.productChecks {
+    list-style-type: none;
+    position: relative;
+    margin-right: auto;
+    margin-left: 0;
+    font-size: 18px;
+    padding-left: 0;
+}
+
+.checkBenefits {
+    margin-left: 8px;
+}
+
+.productFormControlsGroup {
+    margin-top: var(--spacing-large);
+    margin-bottom: var(--spacing-large);
+}
+
+.btnSecondary {
+    border: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: var(--button-style);
+    border: 1px solid var(--color-border);
+    border-radius: var(--button-shape);
+    letter-spacing: .01em;
+    font-weight: var(--font-body-bold-weight);
+    transition: border-color .15s ease-in-out;
+    width: 100%;
+    position: relative;
+    background-color: #1a3b6f;
+    color: #fff;
+    cursor: pointer;
+
+    @media (min-width: 45em) {
+        padding: 16px 28px;
+        font-size: var(--font-size-body-small);
+        line-height: var(--line-height-body-small);
+    }
+
+    &:hover {
+        border-color: var(--color-text);
+        background-color: #ffffff;
+        color: #1a3b6f;
+    }
+}

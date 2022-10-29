@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         <NewProduct />
         <OurMission />
         <Categories />
-        <DailyEssentials />
+        <DailyEssentials heading="Daily Essentials" />
     </>
   );
 };

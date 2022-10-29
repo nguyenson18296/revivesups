@@ -14,6 +14,10 @@ interface IProducts extends IProductItemProps {
   id: number;
 }
 
+interface IProducSlider {
+  heading: string;
+}
+
 const mockProducts: IProducts[] = [
   {
     id: 1,
@@ -85,12 +89,14 @@ const SliderProducts: React.FC = () => {
   );
 };
 
-export const DailyEssentials: React.FC = () => {
+export const DailyEssentials: React.FC<IProducSlider> = ({
+  heading
+}) => {
   return (
     <section className="section">
       <div className="section__inner">
         <div className={styles.sectionHeader}>
-          <h2 className={styles.heading}>Daily Essentials</h2>
+          <h2 className={styles.heading}>{heading}</h2>
         </div>
         <div className={styles.featureCollectionContent}>
           <SliderProducts />
