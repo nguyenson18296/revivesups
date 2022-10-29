@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Categories } from "../../components/Product/Categories/Categories";
+import Categories from "../../components/Product/Categories/Categories";
 import { ProductItem, IProductItemProps } from "../../components/Product/ProductItem";
 
 import productImage from "../../assets/product-item.png";
@@ -9,37 +9,37 @@ import styles from "./ProductsPage.module.scss";
 const mockProducts: IProductItemProps[] = [
     {
         name: "K2 & D3 Bundle",
-        url:"/products/k2-d3-bundle",
+        url:"/san-pham/k2-d3-bundle",
         pricing: "100.000",
         thumbnail: productImage
     },
     {
         name: "K2 & D3 Bundle",
-        url:"/products/k2-d3-bundle",
+        url:"/san-pham/k2-d3-bundle",
         pricing: "100.000",
         thumbnail: productImage
     },
     {
         name: "K2 & D3 Bundle",
-        url:"/products/k2-d3-bundle",
+        url:"/san-pham/k2-d3-bundle",
         pricing: "100.000",
         thumbnail: productImage
     },
     {
         name: "K2 & D3 Bundle",
-        url:"/products/k2-d3-bundle",
+        url:"/san-pham/k2-d3-bundle",
         pricing: "100.000",
         thumbnail: productImage
     },
     {
         name: "K2 & D3 Bundle",
-        url:"/products/k2-d3-bundle",
+        url:"/san-pham/k2-d3-bundle",
         pricing: "100.000",
         thumbnail: productImage
     },
     {
         name: "K2 & D3 Bundle",
-        url:"/products/k2-d3-bundle",
+        url:"/san-pham/k2-d3-bundle",
         pricing: "100.000",
         thumbnail: productImage
     }
