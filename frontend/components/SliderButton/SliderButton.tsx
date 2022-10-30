@@ -14,8 +14,8 @@ const prevButtonStyle: CSSProperties = {
     left: "calc(60px / -2)",
 }
 
-export const SliderButton: React.FC<({ left?: boolean, isHover: boolean })> = ({
-    left, isHover
+export const SliderButton: React.FC<({ left?: boolean, isHover: boolean, onClick?: () => void })> = ({
+    left, isHover, onClick
 }) => {
     const customStyles: CSSProperties = left ? prevButtonStyle : nextButtonStyle
     return (
@@ -27,6 +27,7 @@ export const SliderButton: React.FC<({ left?: boolean, isHover: boolean })> = ({
                 marginLeft: isHover ? "0" : "-20px",
                 marginRight: isHover ? "0" : "-20px",
             }}
+            onClick={onClick}
         >
             <span className={styles.icon}>
                 <Image src={left ? arrowLeft : arrowRight} alt="arrow" />
