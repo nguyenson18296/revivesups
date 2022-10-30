@@ -3,24 +3,20 @@ import Slider from "react-slick";
 
 import {
   ProductItem,
-  IProductItemProps,
 } from "../../Product/ProductItem";
+import { IProductItemProps } from "../../../constants/global";
 import { SliderButton } from "../../SliderButton/SliderButton";
 
 import product from "../../../assets/product.png";
 import styles from "./DailyEssentials.module.scss";
 
-interface IProducts extends IProductItemProps {
-  id: number;
-}
-
 interface IProducSlider {
   heading: string;
 }
 
-const mockProducts: IProducts[] = [
+const mockProducts: IProductItemProps[] = [
   {
-    id: 1,
+    id: "1",
     name: "Immune Defense 1",
     description: "Ultimate Immune Support ",
     pricing: "$39.99",
@@ -28,7 +24,7 @@ const mockProducts: IProducts[] = [
     thumbnail: product,
   },
   {
-    id: 2,
+    id: "2",
     name: "Immune Defense 2",
     description: "Ultimate Immune Support ",
     pricing: "$39.99",
@@ -36,7 +32,7 @@ const mockProducts: IProducts[] = [
     thumbnail: product,
   },
   {
-    id: 3,
+    id: "3",
     name: "Immune Defense 3",
     description: "Ultimate Immune Support ",
     pricing: "$39.99",
@@ -44,7 +40,7 @@ const mockProducts: IProducts[] = [
     thumbnail: product,
   },
   {
-    id: 4,
+    id: "5",
     name: "Immune Defense 4",
     description: "Ultimate Immune Support ",
     pricing: "$39.99",
@@ -57,12 +53,13 @@ const SliderProducts: React.FC = () => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
 
   const settings = {
-    dots: true,
     infinite: true,
+    swipe: true,
+    draggable: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    nextArrow: <SliderButton isHover={isHovering} />,
+    nextArrow: <SliderButton isHover={isHovering}  />,
     prevArrow: <SliderButton left={true} isHover={isHovering} />,
   };
 

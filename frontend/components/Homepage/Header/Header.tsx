@@ -14,11 +14,11 @@ import styles from "./Header.module.scss";
 
 export const Header: React.FC = () => {
     const [count, setCount] = useState(0);
-    const { totalItems } = useCart();
+    const { totalUniqueItems } = useCart();
 
     useEffect(() => {
-        setCount(totalItems)
-    }, [totalItems]);
+        setCount(totalUniqueItems)
+    }, [totalUniqueItems]);
 
     return (
         <>
