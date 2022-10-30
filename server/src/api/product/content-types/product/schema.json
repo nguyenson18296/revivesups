@@ -22,9 +22,6 @@
       "required": true,
       "default": 0
     },
-    "description": {
-      "type": "text"
-    },
     "price_discount": {
       "type": "float",
       "default": 0
@@ -60,6 +57,9 @@
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "products"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }
