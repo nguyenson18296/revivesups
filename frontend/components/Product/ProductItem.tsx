@@ -2,15 +2,16 @@ import React from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
+import { IProductItemProps } from "../../constants/global";
 import styles from "./ProductItem.module.scss";
 
-export interface IProductItemProps {
-  name: string;
-  url: string;
-  pricing: string;
-  description?: string;
-  thumbnail: StaticImageData;
-}
+// export interface IProductItemProps {
+//   name: string;
+//   url: string;
+//   pricing: string;
+//   description?: string;
+//   thumbnail: StaticImageData;
+// }
 
 export const ProductItem: React.FC<IProductItemProps> = ({
   name,

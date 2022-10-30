@@ -87,3 +87,24 @@
     transform: scale(.8);
     transition: opacity .25s,transform .25s ease-in-out;
 }
+
+.headerCartCount {
+    z-index: 10;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-icon-header);
+    color: var(--color-background-header);
+    border-radius: 20px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 13px;
+    right: 7px;
+    font-size: 12px;
+    font-family: Arial,Helvetica,sans-serif;
+    line-height: 1;
+    pointer-events: none;
+    box-shadow: 0 0 0 1px var(--color-background-header);
+    transition: box-shadow .3s ease-in-out;
+}
