@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useCart } from "react-use-cart";
 
 import { BurgerMenu } from "../../BurgerMenu/BurgerMenu";
 
@@ -13,7 +13,12 @@ import cart from "../../../assets/cart.png";
 import styles from "./Header.module.scss";
 
 export const Header: React.FC = () => {
-    const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+    const [count, setCount] = useState(0);
+    const { totalItems } = useCart();
+
+    useEffect(() => {
+        setCount(totalItems)
+    }, [totalItems]);
 
     return (
         <>
@@ -34,14 +39,19 @@ export const Header: React.FC = () => {
                             </span>
                         </a>
                         <a href="/user" className={styles.iconWrap}>
-                            <span>
+                            <span className={styles.iconButton}>
                                 <Image src={user} alt="user" className={styles.rightLogo} width={32} height={32} />
                             </span>
                         </a>
                         <a href="/cart" className={styles.iconWrap}>
-                            <span>
+                            <span className={styles.iconButton}>
                                 <Image src={cart} alt="cart" className={styles.rightLogo} width={32} height={32} />
                             </span>
+                            <div className={styles.headerCartCount}>
+                                <span>
+                                    {count || 0}
+                                </span>
+                            </div>
                         </a>
                     </div>
                 </div>

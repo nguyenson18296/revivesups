@@ -1,10 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import cx from "classnames";
+import { useCart } from "react-use-cart";
 
 import { DailyEssentials } from "../../components/Homepage/DailyEssentials/DailyEssentials";
 
-import image from "../../assets/product-image-detail.png";
+import productImage from "../../assets/product-image-detail.png";
 import star from "../../assets/pointed-star.png";
 import halfStar from "../../assets/half-pointed-star.png";
 import checkMark from "../../assets/check-mark.png";
@@ -12,6 +13,17 @@ import checkMark from "../../assets/check-mark.png";
 import styles from "./ProductDetail.module.scss";
 
 const ProductDetail: React.FC = () => {
+  const { addItem } = useCart();
+
+  const fakeProduct = {
+    id: `id${Math.random().toString(16).slice(2)}`,
+    name: "K2 & D3 Bundle",
+    url: "http://localhost",
+    price: 2000000,
+    quantity: 1,
+    thumbnail: productImage,
+  };
+
   return (
     <>
       <section>
@@ -20,7 +32,7 @@ const ProductDetail: React.FC = () => {
             <div className={styles.productMediaContainer}>
               <div className={styles.productMediaItem}>
                 <Image
-                  src={image}
+                  src={productImage}
                   alt="product-detail"
                   className={styles.productImage}
                 />
@@ -89,7 +101,12 @@ const ProductDetail: React.FC = () => {
                   </ul>
                 </div>
                 <div className={styles.productFormControlsGroup}>
-                  <button className={styles.btnSecondary}>Add to cart</button>
+                  <button
+                    className={styles.btnSecondary}
+                    onClick={() => addItem(fakeProduct, 1)}
+                  >
+                    Add to cart
+                  </button>
                 </div>
               </div>
             </div>
