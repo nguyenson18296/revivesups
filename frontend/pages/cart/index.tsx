@@ -75,6 +75,7 @@ const CartItem: React.FC<ICartItemProps> = ({
               defaultValue={quantityState}
               value={quantityState}
               onChange={onChange}
+              readOnly
             />
             <button
               className={cx(styles.cartItemButton, styles.plusButton)}
