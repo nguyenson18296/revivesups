@@ -4,6 +4,8 @@ import Link from "next/link";
 import cx from "classnames";
 import { Item, useCart } from "react-use-cart";
 
+import { formatCurrency } from "../../utils/utils";
+
 import minus from "../../assets/minus.png";
 import plus from "../../assets/plus.png";
 import styles from "./CartPage.module.scss";
@@ -55,7 +57,7 @@ const CartItem: React.FC<ICartItemProps> = ({
           <Link href={url}>
             <a className={styles.productName}>{name}</a>
           </Link>
-          <div className={styles.cartItemPrice}>{price}</div>
+          <div className={styles.cartItemPrice}>{formatCurrency(price)}</div>
         </div>
         <div className={styles.cartItemQuantity}>
           <div className={styles.cartItemQuantitySelector}>
@@ -84,6 +86,9 @@ const CartItem: React.FC<ICartItemProps> = ({
             </button>
           </div>
         </div>
+        <div className={styles.cartItemTotal}>
+          {formatCurrency(price * quantity)}
+        </div>
       </div>
     </div>
   );
@@ -107,6 +112,16 @@ const CartPage: React.FC = () => {
           </header>
           <div className={styles.cartForm}>
             <div className={styles.cartFormHeader}>
+              <div className={styles.headerProduct}>
+                Sản phẩm
+              </div>
+              <div className={styles.headerQuantity}>
+                Số lượng
+              </div>
+              <div className={styles.headerTotal}>
+                Số tiền
+              </div>
+            </div>
               {(allItems || []).map((item) => (
                 <CartItem
                   key={item.id}
@@ -118,7 +133,21 @@ const CartPage: React.FC = () => {
                   quantity={item.quantity || 0}
                 />
               ))}
-            </div>
+              <div className={styles.cartFoorter}>
+                <div className={styles.cartFooterLeft}>
+
+                </div>
+                <div className={styles.cartFooterRight}>
+                    <p className={cx("ff-header", styles.totalNumber)}>
+                      {formatCurrency(allItems.reduce((prev, curr) => prev + (curr.price * curr?.quantity), 0))}
+                    </p>
+                    <div className={styles.footerAction}>
+                      <button className={styles.submit}>
+                        Thanh toán
+                      </button>
+                    </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
