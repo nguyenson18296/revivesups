@@ -36,8 +36,19 @@
     padding-bottom: var(--spacing-small);
     opacity: 0.75;
   }
+}
 
-  flex-direction: column;
+.headerQuantity {
+  margin-left: auto;
+  width: 100px;
+  text-align: center;
+}
+
+.headerTotal {
+  @media (min-width: 60em) {
+    width: 140px;
+  }
+  text-align: right;
 }
 
 .cartItem {
@@ -79,7 +90,7 @@
 .cartItemMain {
   @media (min-width: 45em) {
     flex-wrap: nowrap;
-    width: calc(100% - 220px);
+    width: calc(100% - 280px);
   }
 
   width: 100%;
@@ -182,3 +193,83 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.cartItemTotal {
+  @media (min-width: 60em) {
+    width: 140px;
+  }
+
+  @media (min-width: 45em) {
+    display: block;
+  }
+
+  display: none;
+  text-align: right;
+  width: 100px;
+  padding-left: var(--spacing-medium);
+  flex-shrink: 0;
+  font-size: var(--font-size-body-base);
+  line-height: var(--line-height-body-base);
+}
+
+.cartFoorter {
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: var(--spacing-large);
+}
+
+.cartFooterLeft {
+  @media (min-width: 45em) {
+    width: 35%;
+  }
+  width: 100%;
+}
+
+.cartFooterRight {
+  @media (min-width: 45em) {
+    width: 65%;
+  }
+  text-align: right;
+  width: 100%;
+  margin-bottom: var(--spacing-large);
+}
+
+.totalNumber {
+  font-size: var(--font-size-heading-4-base);
+  line-height: var(--line-height-heading-4-base);
+}
+
+.footerAction {
+  margin-top: var(--spacing-medium);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.submit {
+  @media (min-width: 45em) {
+    padding: 16px 28px;
+    font-size: var(--font-size-body-small);
+    line-height: var(--line-height-body-small);
+  }
+  border: none;
+  cursor: pointer;
+  background-color: #00a7e1;
+  color: #ffffff;
+  text-transform: var(--button-style);
+  letter-spacing: 0.01em;
+  font-weight: var(--font-body-bold-weight);
+  border-radius: var(--button-shape);
+  transition: border-color 0.25s ease-in-out, background-color 0.25s ease-in-out,
+    color 0.25s ease-in-out;
+  margin-left: var(--spacing-small);
+  font-size: var(--font-size-body-x-small);
+  line-height: var(--line-height-body-x-small);
+  padding: 12px 24px;
+
+  &:hover {
+    border-color: var(--color-background-button-hover);
+    background-color: var(--color-background-button-hover);
+  }
+}
