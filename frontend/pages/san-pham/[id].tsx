@@ -2,8 +2,11 @@ import React from "react";
 import Image from "next/image";
 import cx from "classnames";
 import { useCart } from "react-use-cart";
+import get from "lodash/get";
 
 import { DailyEssentials } from "../../components/Homepage/DailyEssentials/DailyEssentials";
+import { API_ENDPOINT_URL } from "../../constants/global";
+import { formatCurrency } from "../../utils/utils";
 
 import productImage from "../../assets/product-image-detail.png";
 import star from "../../assets/pointed-star.png";
@@ -12,17 +15,12 @@ import checkMark from "../../assets/check-mark.png";
 
 import styles from "./ProductDetail.module.scss";
 
-const ProductDetail: React.FC = () => {
-  const { addItem } = useCart();
+interface IProductDetail {
+  product: any;
+}
 
-  const fakeProduct = {
-    id: `id${Math.random().toString(16).slice(2)}`,
-    name: "K2 & D3 Bundle",
-    url: "http://localhost",
-    price: 2000000,
-    quantity: 1,
-    thumbnail: productImage,
-  };
+const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
+  const { addItem } = useCart();
 
   return (
     <>
@@ -41,7 +39,7 @@ const ProductDetail: React.FC = () => {
             <div className={styles.productDetail}>
               <div className={styles.productMeta}>
                 <h1 className={cx(styles.productName, "ff-heading")}>
-                  Immune Defense
+                  {get(product, "data.attributes.name", "")}
                 </h1>
                 <div className={styles.productBlockReviews}>
                   <div className={styles.rating}>
@@ -103,9 +101,9 @@ const ProductDetail: React.FC = () => {
                 <div className={styles.productFormControlsGroup}>
                   <button
                     className={styles.btnSecondary}
-                    onClick={() => addItem(fakeProduct, 1)}
+                    onClick={() => addItem(product, 1)}
                   >
-                    Add to cart
+                    Thêm vào giỏ hàng&nbsp;&nbsp;-&nbsp;&nbsp;<span>{formatCurrency(get(product, "data.attributes.price", ""))}</span>
                   </button>
                 </div>
               </div>
@@ -113,9 +111,36 @@ const ProductDetail: React.FC = () => {
           </div>
         </div>
       </section>
+      <section>
+        <div dangerouslySetInnerHTML={{
+          __html: get(product, "data.attributes.description", "")
+        }}>
+
+        </div>
+      </section>
       <DailyEssentials heading="Các sản phẩm khác" />
     </>
   );
 };
+
+// This function gets called at build time
+export async function getStaticPaths() {
+  const res = await fetch(`${API_ENDPOINT_URL}/products`);
+  const products = await res.json();
+
+  const paths = (products?.data || []).map((product: any) => ({
+    params: { id: product?.id?.toString() },
+  }))
+
+  return { paths, fallback: false }
+}
+
+// This also gets called at build time
+export async function getStaticProps({ params }: { params: any}) {
+  const res = await fetch(`${API_ENDPOINT_URL}/products/${params.id}`)
+  const product = await res.json();
+
+  return { props: { product } };
+}
 
 export default ProductDetail;
