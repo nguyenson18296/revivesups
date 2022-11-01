@@ -19,10 +19,10 @@ const Categories: React.FC= () => {
     const getCategories = useCallback(async () => {
       const response = await fromApi.getCategories();
       const categoriesRaw = response?.data;
-      const formatCategories: ICategory[] = (categoriesRaw || []).map(({ attributes }: { attributes: any }) => ({
-        id: kebabCase(deburr(attributes?.name)),
-        name: attributes?.name,
-        url: kebabCase(deburr(attributes?.name))
+      const formatCategories: ICategory[] = (categoriesRaw || []).map((item: any) => ({
+        id: item.id,
+        name: item?.attributes?.name,
+        url: kebabCase(deburr(item?.attributes?.name))
       }));
       setCategories(formatCategories);
     }, []);
@@ -31,18 +31,19 @@ const Categories: React.FC= () => {
       getCategories();
     }, [getCategories]);
 
-
   return (
     <div className={styles.filterBar}>
       <ul className={styles.buttonBar}>
         {categories.map((item, index) => (
           <button key={item.id} className={styles.loadCollection}>
-              {router.asPath === item.url ? (
+              {router?.query?.id === item.id.toString() ? (
                   <li className={styles.filterButtonActive}>
                     {item.name}
                   </li>
               ) : (
-                <a href={item.url}>
+                <a
+                  href={item.id}
+                >
                     <li className={styles.filterButton}>{item.name}</li>
                 </a>
               )}
@@ -52,20 +53,5 @@ const Categories: React.FC= () => {
     </div>
   );
 };
-
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const res = await fetch('http://localhost:1337/api/categories')
-  const categories = await res.json()
-
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      categories,
-    },
-  }
-}
 
 export default Categories;

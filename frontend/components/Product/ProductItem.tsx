@@ -1,7 +1,8 @@
 import React from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import Link from "next/link";
 
+import { formatCurrency } from "../../utils/utils";
 import { IProductItemProps } from "../../constants/global";
 import styles from "./ProductItem.module.scss";
 
@@ -15,7 +16,7 @@ export const ProductItem: React.FC<IProductItemProps> = ({
   return (
     <div className={styles.productItem}>
       <div className={styles.productItemMedia}>
-        <Link href={url}>
+        <Link href={`/${url}`}>
           <a>
             <Image
               src={thumbnail} 
@@ -35,7 +36,7 @@ export const ProductItem: React.FC<IProductItemProps> = ({
         </Link>
         <span className={styles.productDescription}>{description}</span>
         <br />
-        <span className={styles.productPrice}>{pricing}</span>
+        <span className={styles.productPrice}>{formatCurrency(+pricing)}</span>
       </div>
       <input
         type="submit"
