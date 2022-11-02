@@ -22,6 +22,8 @@ interface IProductDetail {
 const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
   const { addItem } = useCart();
 
+  console.log("product", product);
+
   return (
     <>
       <section>
@@ -29,10 +31,13 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
           <div className={styles.productTop}>
             <div className={styles.productMediaContainer}>
               <div className={styles.productMediaItem}>
-                <Image
-                  src={productImage}
+                <img
+                  src={`http://localhost:1337` + get(product, "data.attributes.thumbnail.data[0].attributes.url", "")}
+                  // src="http://localhost:1337/uploads/products_item_91e890ea03.png"
                   alt="product-detail"
                   className={styles.productImage}
+                  width={640}
+                  height={640}
                 />
               </div>
             </div>
@@ -125,7 +130,7 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
 
 // This function gets called at build time
 export async function getStaticPaths() {
-  const res = await fetch(`${API_ENDPOINT_URL}/products`);
+  const res = await fetch(`${API_ENDPOINT_URL}/products?populate=thumbnail`);
   const products = await res.json();
 
   const paths = (products?.data || []).map((product: any) => ({
@@ -137,7 +142,7 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }: { params: any}) {
-  const res = await fetch(`${API_ENDPOINT_URL}/products/${params.id}`)
+  const res = await fetch(`${API_ENDPOINT_URL}/products/${params.id}?populate=thumbnail`)
   const product = await res.json();
 
   return { props: { product } };
