@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useCallback, useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
@@ -43,8 +44,8 @@ const CartItem: React.FC<ICartItemProps> = ({
     <div className={styles.cartItem}>
       <div className={styles.cartItemImageWrapper}>
         <div className={styles.imageWrapper}>
-          <Image
-            src={thumbnail}
+          <img
+            src={`http://localhost:1337${thumbnail}`}
             alt={name}
             width={120}
             height={120}
@@ -54,9 +55,9 @@ const CartItem: React.FC<ICartItemProps> = ({
       </div>
       <div className={styles.cartItemMain}>
         <div className={styles.cartItemDetails}>
-          <Link href={url}>
+          <a href={url}>
             <a className={styles.productName}>{name}</a>
-          </Link>
+          </a>
           <div className={styles.cartItemPrice}>{formatCurrency(price)}</div>
         </div>
         <div className={styles.cartItemQuantity}>
@@ -103,6 +104,8 @@ const CartPage: React.FC = () => {
   useEffect(() => {
     setallItems(JSON.parse(JSON.stringify(items)));
   }, [items]);
+
+  console.log("allItems", allItems);
 
   return (
     <section>
