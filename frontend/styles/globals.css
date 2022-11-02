@@ -251,6 +251,7 @@ p {
 }
 
 .button-primay {
+  cursor: pointer;
   border: 1px solid;
   margin-top: 10px;
   border-color: #1a3b70;

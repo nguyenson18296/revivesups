@@ -43,7 +43,7 @@ export const Header: React.FC = () => {
                                 <Image src={user} alt="user" className={styles.rightLogo} width={32} height={32} />
                             </span>
                         </a>
-                        <a href="/cart" className={styles.iconWrap}>
+                        <a href="/gio-hang" className={styles.iconWrap}>
                             <span className={styles.iconButton}>
                                 <Image src={cart} alt="cart" className={styles.rightLogo} width={32} height={32} />
                             </span>

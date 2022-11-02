@@ -12,51 +12,6 @@ interface ICategoryProducts {
     category: any;
   }
 
-const mockProducts: IProductItemProps[] = [
-    {
-        id: "1",
-        name: "K2 & D3 Bundle",
-        url:"/san-pham/k2-d3-bundle",
-        pricing: "100.000",
-        thumbnail: productImage
-    },
-    {
-        id: "2",
-        name: "K2 & D3 Bundle",
-        url:"/san-pham/k2-d3-bundle",
-        pricing: "100.000",
-        thumbnail: productImage
-    },
-    {
-        id: "3",
-        name: "K2 & D3 Bundle",
-        url:"/san-pham/k2-d3-bundle",
-        pricing: "100.000",
-        thumbnail: productImage
-    },
-    {
-        id: "4",
-        name: "K2 & D3 Bundle",
-        url:"/san-pham/k2-d3-bundle",
-        pricing: "100.000",
-        thumbnail: productImage
-    },
-    {
-        id: "5",
-        name: "K2 & D3 Bundle",
-        url:"/san-pham/k2-d3-bundle",
-        pricing: "100.000",
-        thumbnail: productImage
-    },
-    {
-        id: "6",
-        name: "K2 & D3 Bundle",
-        url:"/san-pham/k2-d3-bundle",
-        pricing: "100.000",
-        thumbnail: productImage
-    }
-];
-
 const ProductsPage: React.FC<ICategoryProducts> = ({
     category
 }) => {
@@ -91,7 +46,7 @@ const ProductsPage: React.FC<ICategoryProducts> = ({
                     {categoryProducts.map((item: any, index: number) => {
                         return (
                             <div key={index} className={styles.productItem}>
-                                <ProductItem {...item} />
+                                <ProductItem {...item} canAddToCart />
                             </div>
                         )
                     })}

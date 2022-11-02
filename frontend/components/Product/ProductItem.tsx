@@ -1,18 +1,27 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useCart } from "react-use-cart";
 
 import { formatCurrency } from "../../utils/utils";
 import { IProductItemProps } from "../../constants/global";
 import styles from "./ProductItem.module.scss";
 
-export const ProductItem: React.FC<IProductItemProps> = ({
+interface IProductItem extends IProductItemProps {
+  canAddToCart: boolean;
+}
+
+export const ProductItem: React.FC<IProductItem> = ({
+  id,
   name,
   description,
   pricing,
   url,
   thumbnail,
+  canAddToCart
 }) => {
+  const { addItem } = useCart();
+
   return (
     <div className={styles.productItem}>
       <div className={styles.productItemMedia}>
@@ -38,12 +47,20 @@ export const ProductItem: React.FC<IProductItemProps> = ({
         <br />
         <span className={styles.productPrice}>{formatCurrency(+pricing)}</span>
       </div>
-      <input
-        type="submit"
-        name="add"
-        value="Add to cart"
-        className="button-primay "
-      />
+      {canAddToCart && (
+        <input
+          onClick={() => addItem({
+            id,
+            price: +pricing,
+            url,
+            name
+          }, 1)}
+          type="submit"
+          name="add"
+          value="Add to cart"
+          className="button-primay"
+        />
+      )}
     </div>
   );
 };
