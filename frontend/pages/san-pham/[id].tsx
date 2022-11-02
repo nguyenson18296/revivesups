@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
 import cx from "classnames";
@@ -106,7 +107,12 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
                 <div className={styles.productFormControlsGroup}>
                   <button
                     className={styles.btnSecondary}
-                    onClick={() => addItem(product, 1)}
+                    onClick={() => addItem({
+                      id: get(product, "data.id", ""),
+                      price: get(product, "data.attributes.price", 0),
+                      thumbnail: get(product, "data.attributes.thumbnail.data[0].attributes.url", ""),
+                      name: get(product, "data.attributes.name", "")
+                    }, 1)}
                   >
                     Thêm vào giỏ hàng&nbsp;&nbsp;-&nbsp;&nbsp;<span>{formatCurrency(get(product, "data.attributes.price", ""))}</span>
                   </button>

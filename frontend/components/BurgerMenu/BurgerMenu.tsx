@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import React, { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
-import Link from "next/link";
+import Image from "next/image";
 import cx from "classnames";
 
+import closeIcon from "../../assets/close.png";
 import styles from "./BurgerMenu.module.scss";
 
 export const BurgerMenu: React.FC = ({
@@ -17,6 +18,7 @@ export const BurgerMenu: React.FC = ({
             onClose={() => setIsOpenMenu(false)}
             isOpen={isOpenMenu}
             pageWrapId="page-wrap"
+            customCrossIcon={<Image src={closeIcon} height={42} width={42} alt="close" />}
         >
             <div className={styles.slideMenuContent}>
                 <ul className={styles.drawerAllLinks}>
