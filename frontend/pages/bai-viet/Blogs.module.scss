@@ -1,0 +1,44 @@
+.wrapper {
+    margin-inline: auto;
+    width: 85rem;
+    width: clamp(16rem, 95vw, 85rem);
+    padding-inline: clamp(1.375rem, 1.2rem + 0.89vw, 2rem);
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 410px);
+    grid-gap: var(--gutter, clamp(1.375rem, 1.2rem + 0.89vw, 2rem));
+}
+
+.postWrapper {
+    padding-inline: 0;
+    width: 85rem;
+    width: clamp(16rem, 95vw, 85rem);
+    position: relative;
+    margin: 0 auto;
+}
+
+.region {
+    padding-top: 36px;
+}
+
+.prose {
+    flex-basis: 0;
+    flex-grow: 999;
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: clamp(3.75rem, 3.21rem + 2.68vw, 5.625rem);
+}
+
+.title {
+    max-width: 30ch;
+    margin-top: 30px;
+    font-size: 50px;
+}
+
+.postContent {
+    margin-top: 32px;
+}

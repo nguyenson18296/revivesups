@@ -1,0 +1,53 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    padding: 1.25rem;
+    border: 1px solid #d2d3d7;
+    border-radius: 10px;
+    max-width: 37rem;
+    text-decoration: none;
+    word-break: break-word;
+    background: #ffffff;
+    cursor: pointer;
+    height: 550px;
+
+    &:hover {
+        background: #f8f9fa;
+    }
+
+    a {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.cardHero {
+    width: 100%;
+    aspect-ratio: 5/3;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+.cardContent {
+    flex: auto;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    
+    &:first-child {
+        margin-top: clamp(1.375rem, 1.2rem + 0.89vw, 2rem);
+    }
+}
+
+.cardHeading {
+    margin-top: 32px;
+    font-size: 30px;
+}
+
+.subHeading {
+    margin-top: 28px;
+}
