@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useCallback, useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import Link from "next/link";
 import cx from "classnames";
 import { Item, useCart } from "react-use-cart";
 
@@ -10,6 +9,7 @@ import { formatCurrency } from "../../utils/utils";
 import minus from "../../assets/minus.png";
 import plus from "../../assets/plus.png";
 import styles from "./CartPage.module.scss";
+import Link from "next/link";
 
 interface ICartItemProps {
   thumbnail: StaticImageData;
@@ -147,7 +147,9 @@ const CartPage: React.FC = () => {
                     </p>
                     <div className={styles.footerAction}>
                       <button className={styles.submit}>
-                        Thanh toán
+                        <Link href="/thanh-toan">
+                          Thanh toán
+                        </Link>
                       </button>
                     </div>
                 </div>
