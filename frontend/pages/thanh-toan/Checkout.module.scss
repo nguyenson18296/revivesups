@@ -1,0 +1,23 @@
+.wrap {
+    @media (min-width: 1000px) {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        padding: 0 5%;
+        width: 90%;
+        max-width: 78.5714285714em;
+    }
+
+    display: block;
+    margin: 0 auto;
+    max-width: 40em;
+    zoom: 1;
+    flex: 1 0 auto;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+}
