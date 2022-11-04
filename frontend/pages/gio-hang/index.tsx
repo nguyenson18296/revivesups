@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useCallback, useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
+import Head from "next/head";
 import cx from "classnames";
 import { Item, useCart } from "react-use-cart";
 
@@ -108,7 +109,11 @@ const CartPage: React.FC = () => {
   console.log("allItems", allItems);
 
   return (
-    <section>
+    <>
+      <Head>
+        <title>Giỏ hàng</title>
+      </Head>
+      <section>
       <div className={styles.cartPage}>
         <div className={styles.cartContainer}>
           <header className={cx(styles.cartHeader, "ff-heading")}>
@@ -158,6 +163,7 @@ const CartPage: React.FC = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Head from "next/head";
 
 import { Banner } from "../components/Homepage/Banner/Banner";
 import { NewProduct } from "../components/Homepage/NewProduct/NewProduct";
@@ -12,11 +13,14 @@ import styles from "../styles/Home.module.css";
 const Home: NextPage = () => {
   return (
     <>
-        <Banner />
-        <NewProduct />
-        <OurMission />
-        <Categories />
-        <DailyEssentials heading="Daily Essentials" />
+      <Head>
+        <title>Revivesup</title>
+      </Head>
+      <Banner />
+      <NewProduct />
+      <OurMission />
+      <Categories />
+      <DailyEssentials heading="Daily Essentials" />
     </>
   );
 };
