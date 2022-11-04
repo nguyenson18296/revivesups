@@ -13,8 +13,14 @@
   flex: 1;
   padding: 2rem 0;
   border-top: 1px solid #eaeaea;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding-right: var(--space-outer);
+  padding-left: var(--space-outer);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--max-width);
+
 }
 
 .footer a {
@@ -22,6 +28,56 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+
+.socialLinks {
+    display: flex;
+    -moz-box-align: center;
+    align-items: center;
+    -moz-box-flex: 0;
+    flex: 0 1 auto;
+}
+
+.iconLink {
+  display: inline-block;
+  margin-right: 16px;
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.iconWrapper {
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+  transition: all .1s ease-in;
+}
+
+.instagram {
+  background-image: url("../assets/instagram.png");
+}
+
+.instagram:hover {
+  background-image: url("../assets/instagram-active.png");
+}
+
+.facebook {
+  background-image: url("../assets/facebook.png");
+}
+
+.facebook:hover {
+  background-image: url("../assets/facebook-active.png");
+}
+
+.youtube {
+  background-image: url("../assets/youtube.png");
+}
+
+.youtube:hover {
+  background-image: url("../assets/youtube-active.png");
 }
 
 .title a {

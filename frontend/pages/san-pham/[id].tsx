@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image from "next/image";
+import Head from "next/head";
 import cx from "classnames";
 import { useCart } from "react-use-cart";
 import get from "lodash/get";
@@ -9,7 +10,6 @@ import { DailyEssentials } from "../../components/Homepage/DailyEssentials/Daily
 import { API_ENDPOINT_URL } from "../../constants/global";
 import { formatCurrency } from "../../utils/utils";
 
-import productImage from "../../assets/product-image-detail.png";
 import star from "../../assets/pointed-star.png";
 import halfStar from "../../assets/half-pointed-star.png";
 import checkMark from "../../assets/check-mark.png";
@@ -23,10 +23,13 @@ interface IProductDetail {
 const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
   const { addItem } = useCart();
 
-  console.log("product", product);
-
   return (
     <>
+      <Head>
+        <title>
+          Sản phảm - {get(product, "data.attributes.name", "")}
+        </title>
+      </Head>
       <section>
         <div className={styles.product}>
           <div className={styles.productTop}>

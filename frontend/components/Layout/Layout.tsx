@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
+import cx from "classnames";
 
 import { Header } from "../Homepage/Header/Header";
 import styles from "../../styles/Home.module.css";
+import Link from "next/link";
 
 interface ILayout {
     children: JSX.Element;
@@ -25,21 +27,34 @@ const Layout: React.FC<ILayout> = ({
         </main>
 
         <footer className={styles.footer}>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by{" "}
-            <span className={styles.logo}>
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                width={72}
-                height={16}
-              />
-            </span>
-          </a>
+         <div>
+          © 2022, Reviveups
+         </div>
+         <div className={styles.socialLinks}>
+          <ul>
+            <li className={styles.iconLink}>
+              <a href="https://www.instagram.com/">
+                <div className={cx(styles.iconWrapper, styles.instagram)}>
+
+                </div>
+              </a>
+            </li>
+            <li className={styles.iconLink}>
+              <a href="https://facebook.com/">
+                <div className={cx(styles.iconWrapper, styles.facebook)}>
+
+                </div>
+              </a>
+            </li>
+            <li className={styles.iconLink}>
+              <a href="https://www.youtube.com/">
+                <div className={cx(styles.iconWrapper, styles.youtube)}>
+
+                </div>
+              </a>
+            </li>
+          </ul>
+         </div>
         </footer>
       </div>
     </>
