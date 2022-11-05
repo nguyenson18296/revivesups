@@ -1,15 +1,70 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import Link from "next/link";
+import { useCart } from "react-use-cart";
+import get from "lodash/get";
+
+import fromApi from "../../services/api/api";
 
 import styles from "./CheckoutForm.module.scss";
 
 export const CheckoutForm: React.FC = () => {
-    const onSubmit = () => {
-        console.log("submit");
-    }
+  const [address, setAddress] = useState({
+      email: "",
+      last_name: "",
+      first_name: "",
+      address: "",
+      city: "",
+      address_detail: "",
+      phone_number: ""
+  });
+  const [allItems, setallItems] = useState<any[]>([]);
+
+const { items } = useCart();
+
+useEffect(() => {
+    setallItems(JSON.parse(JSON.stringify(items)));
+  }, [items]);
+
+  const handleChange = useCallback((e: React.ChangeEvent) => {
+    const { name, value } = e.currentTarget as HTMLInputElement;
+    
+    setAddress({
+        ...address,
+        [name]: value
+    })
+  }, [address]);
+
+  const onSubmit = async (e: React.FormEvent) => {
+      e.preventDefault();
+      const submitBody = {
+          data: {
+              ...address
+          }
+      }
+      try {
+        const response = await fromApi.createOrder(submitBody);
+        if (response) {
+            await Promise.all(allItems.map(item => {
+                const data = {
+                    order: get(response, "data.id", ""),
+                    quantity: item.quantity,
+                    product: item.id
+                }
+                return fromApi.createOrderLineItem({
+                    data
+                });
+            })).then(() => {
+                console.log("success");
+            })
+        };
+      } catch (e) {
+
+      }
+  };
+
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <div className={styles.stepSection}>
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
@@ -18,12 +73,38 @@ export const CheckoutForm: React.FC = () => {
           <div>
             <div className="fieldset">
               <div className={styles.field}>
-                <input placeholder="Email" className={styles.input} required />
+                <input
+                  placeholder="Email"
+                  className={styles.input}
+                  name="email"
+                  required
+                  onChange={handleChange}
+                  value={address["email"]}
+                />
               </div>
             </div>
             <div className="fieldset">
               <div className={styles.field}>
-                <input placeholder="Họ tên" className={styles.input} required />
+                <input
+                  placeholder="Họ"
+                  className={styles.input}
+                  name="last_name"
+                  required
+                  onChange={handleChange}
+                  value={address["last_name"]}
+                />
+              </div>
+            </div>
+            <div className="fieldset">
+              <div className={styles.field}>
+                <input
+                  placeholder="Tên"
+                  className={styles.input}
+                  name="first_name"
+                  required
+                  onChange={handleChange}
+                  value={address["first_name"]}
+                />
               </div>
             </div>
             <div className="fieldset">
@@ -32,15 +113,9 @@ export const CheckoutForm: React.FC = () => {
                   placeholder="Địa chỉ"
                   className={styles.input}
                   required
-                />
-              </div>
-            </div>
-            <div className="fieldset">
-              <div className={styles.field}>
-                <input
-                  placeholder="Toà nhà, chung cư (tuỳ chọn)"
-                  className={styles.input}
-                  required
+                  name="address"
+                  onChange={handleChange}
+                  value={address["address"]}
                 />
               </div>
             </div>
@@ -50,6 +125,20 @@ export const CheckoutForm: React.FC = () => {
                   placeholder="Thành phố"
                   className={styles.input}
                   required
+                  name="city"
+                  onChange={handleChange}
+                  value={address["city"]}
+                />
+              </div>
+            </div>
+            <div className="fieldset">
+              <div className={styles.field}>
+                <input
+                  placeholder="Toà nhà, chung cư (tuỳ chọn)"
+                  className={styles.input}
+                  name="address_detail"
+                  onChange={handleChange}
+                  value={address["address_detail"]}
                 />
               </div>
             </div>
@@ -58,7 +147,11 @@ export const CheckoutForm: React.FC = () => {
                 <input
                   placeholder="Số điện thoại"
                   className={styles.input}
+                  type="number"
                   required
+                  name="phone_number"
+                  onChange={handleChange}
+                  value={address["phone_number"]}
                 />
               </div>
             </div>
@@ -68,10 +161,9 @@ export const CheckoutForm: React.FC = () => {
               <Link className={styles.returnToCart} href="/gio-hang">
                 Quay lại giỏ hàng
               </Link>
-              <button
-                className={styles.continueButton}
-                onSubmit={onSubmit}
-            >Tiếp tục</button>
+              <button className={styles.continueButton}>
+                Tiếp tục
+              </button>
             </div>
           </div>
         </section>

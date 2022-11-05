@@ -4,7 +4,8 @@
   "info": {
     "singularName": "order-line-item",
     "pluralName": "order-line-items",
-    "displayName": "OrderLineItem"
+    "displayName": "OrderLineItem",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

@@ -42,8 +42,6 @@ export const BurgerMenu: React.FC = ({
         getCategories();
       }, [getCategories]);
 
-      console.log("categories", categories);
-
     return (
         <Menu
             width={640}
