@@ -8,6 +8,22 @@ class ApiCallCreator {
       HTTP_METHODS.GET,
       {}
     );
+  };
+
+  createOrder(data: any) {
+    return createApiRequest(
+      "/orders",
+      HTTP_METHODS.POST,
+      data
+    )
+  }
+
+  createOrderLineItem(data: any) {
+    return createApiRequest(
+      "/order-line-items",
+      HTTP_METHODS.POST,
+      data
+    )
   }
 }
 
