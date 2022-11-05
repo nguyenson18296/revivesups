@@ -31,19 +31,27 @@
       "type": "email"
     },
     "last_name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "first_name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "address": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "city": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "phone_number": {
-      "type": "biginteger"
+      "type": "biginteger",
+      "required": true
+    },
+    "detail": {
+      "type": "string"
     }
   }
 }
