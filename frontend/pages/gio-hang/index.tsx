@@ -148,7 +148,7 @@ const CartPage: React.FC = () => {
                 </div>
                 <div className={styles.cartFooterRight}>
                     <p className={cx("ff-header", styles.totalNumber)}>
-                      {formatCurrency(allItems.reduce((prev, curr) => prev + (curr.price * curr?.quantity), 0))}
+                      {formatCurrency(allItems.reduce((prev, curr) => prev + (curr.price * (curr?.quantity || 0)), 0))}
                     </p>
                     <div className={styles.footerAction}>
                       <button className={styles.submit}>
