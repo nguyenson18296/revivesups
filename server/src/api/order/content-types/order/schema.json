@@ -26,6 +26,24 @@
       "relation": "oneToMany",
       "target": "api::order-line-item.order-line-item",
       "mappedBy": "order"
+    },
+    "email": {
+      "type": "email"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "biginteger"
     }
   }
 }
