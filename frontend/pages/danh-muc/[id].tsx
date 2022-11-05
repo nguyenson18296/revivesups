@@ -20,15 +20,18 @@ const ProductsPage: React.FC<ICategoryProducts> = ({ category }) => {
 
   useEffect(() => {
     const products = get(category, "data.attributes.products.data", []);
+    console.log("products", products);
     const formatProducts: IProductItemProps[] = products.map((item: any) => ({
       id: item.id.toString(),
       name: get(item, "attributes.name", ""),
       url: `san-pham/${item.id}`,
       pricing: get(item, "attributes.price", ""),
-      thumbnail: productImage,
+      thumbnail: get(item, "attributes.thumbnail.data[0].attributes.url", ""),
     }));
     setCategoryProducts(formatProducts);
   }, [category]);
+
+  console.log("categoryProducts", categoryProducts);
 
   return (
     <>

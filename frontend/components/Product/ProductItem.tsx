@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "react-use-cart";
+import { toast } from "react-toastify";
 
 import { formatCurrency } from "../../utils/utils";
 import { IProductItemProps } from "../../constants/global";
@@ -21,6 +22,15 @@ export const ProductItem: React.FC<IProductItem> = ({
   canAddToCart
 }) => {
   const { addItem } = useCart();
+
+  const onAddItemToCart = useCallback((data: any) => {
+    toast.success("Thêm sản phẩm vào giỏ hàng thành công!", {
+      theme: "colored"
+    });
+    addItem(data, 1)
+  }, [addItem]);
+
+  console.log("thumbnail", thumbnail);
 
   return (
     <div className={styles.productItem}>
@@ -49,12 +59,13 @@ export const ProductItem: React.FC<IProductItem> = ({
       </div>
       {canAddToCart && (
         <input
-          onClick={() => addItem({
+          onClick={() => onAddItemToCart({
             id,
+            thumbnail,
             price: +pricing,
             url,
             name
-          }, 1)}
+          })}
           type="submit"
           name="add"
           value="Add to cart"

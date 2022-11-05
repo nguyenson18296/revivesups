@@ -1,5 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import cx from "classnames";
 
 import styles from "./Banner.module.scss";
 
@@ -8,7 +9,7 @@ export const Banner: React.FC = () => {
     <>
       <section className={styles.bannerSection}>
         <div className={styles.bannerContainer}>
-          <div className={styles.bannerImg}>
+          <div className={cx(styles.bannerImg, styles.bannerTransition)}>
             <div className={styles.bannerContent}>
               <div className={styles.bannerContentInner}>
                 <h4 className={styles.heading}>Introducing Immune Defense</h4>
