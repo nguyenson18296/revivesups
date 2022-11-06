@@ -1,9 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useCallback } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import cx from "classnames";
 import { useCart } from "react-use-cart";
+import { toast } from "react-toastify";
 import get from "lodash/get";
 
 import { DailyEssentials } from "../../components/Homepage/DailyEssentials/DailyEssentials";
@@ -23,6 +24,15 @@ interface IProductDetail {
 const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
   const { addItem } = useCart();
 
+  const onAddItemToCart = useCallback((data: any) => {
+    toast.success("Thêm sản phẩm vào giỏ hàng thành công!", {
+      theme: "colored"
+    });
+    addItem(data, 1)
+  }, [addItem]);
+
+  console.log("product", product);
+
   return (
     <>
       <Head>
@@ -37,7 +47,6 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
               <div className={styles.productMediaItem}>
                 <img
                   src={`http://localhost:1337` + get(product, "data.attributes.thumbnail.data[0].attributes.url", "")}
-                  // src="http://localhost:1337/uploads/products_item_91e890ea03.png"
                   alt="product-detail"
                   className={styles.productImage}
                   width={640}
@@ -110,12 +119,13 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
                 <div className={styles.productFormControlsGroup}>
                   <button
                     className={styles.btnSecondary}
-                    onClick={() => addItem({
+                    onClick={() => onAddItemToCart({
                       id: get(product, "data.id", ""),
+                      url: `/san-pham/${get(product, "data.id", "")}`,
                       price: get(product, "data.attributes.price", 0),
                       thumbnail: get(product, "data.attributes.thumbnail.data[0].attributes.url", ""),
                       name: get(product, "data.attributes.name", "")
-                    }, 1)}
+                    })}
                   >
                     Thêm vào giỏ hàng&nbsp;&nbsp;-&nbsp;&nbsp;<span>{formatCurrency(get(product, "data.attributes.price", ""))}</span>
                   </button>

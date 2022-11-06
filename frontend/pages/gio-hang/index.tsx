@@ -57,7 +57,7 @@ const CartItem: React.FC<ICartItemProps> = ({
       <div className={styles.cartItemMain}>
         <div className={styles.cartItemDetails}>
           <a href={url}>
-            <a className={styles.productName}>{name}</a>
+            <div className={styles.productName}>{name}</div>
           </a>
           <div className={styles.cartItemPrice}>{formatCurrency(price)}</div>
         </div>
@@ -99,7 +99,6 @@ const CartItem: React.FC<ICartItemProps> = ({
 
 const CartPage: React.FC = () => {
   const [allItems, setallItems] = useState<Item[]>([]);
-  // const [cartItems, setCartItems] = useState<IProductItemAddToCart[]>([]);
   const { items } = useCart();
 
   useEffect(() => {
