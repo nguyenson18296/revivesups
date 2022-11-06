@@ -20,7 +20,6 @@ const ProductsPage: React.FC<ICategoryProducts> = ({ category }) => {
 
   useEffect(() => {
     const products = get(category, "data.attributes.products.data", []);
-    console.log("products", products);
     const formatProducts: IProductItemProps[] = products.map((item: any) => ({
       id: item.id.toString(),
       name: get(item, "attributes.name", ""),
@@ -31,7 +30,6 @@ const ProductsPage: React.FC<ICategoryProducts> = ({ category }) => {
     setCategoryProducts(formatProducts);
   }, [category]);
 
-  console.log("categoryProducts", categoryProducts);
 
   return (
     <>
@@ -82,10 +80,10 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }: { params: any }) {
-  const res = await fetch(
+  const response = await fetch(
     `${API_ENDPOINT_URL}/categories/${params.id}?populate=*`
   );
-  const category = await res.json();
+  const category = await response.json();
 
   return { props: { category } };
 }

@@ -1,8 +1,10 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "react-use-cart";
 import { toast } from "react-toastify";
+import cx from "classnames";
 
 import { formatCurrency } from "../../utils/utils";
 import { IProductItemProps } from "../../constants/global";
@@ -30,17 +32,15 @@ export const ProductItem: React.FC<IProductItem> = ({
     addItem(data, 1)
   }, [addItem]);
 
-  console.log("thumbnail", thumbnail);
-
   return (
     <div className={styles.productItem}>
       <div className={styles.productItemMedia}>
         <Link href={`/${url}`}>
           <a>
-            <Image
-              src={thumbnail} 
+            <img
+              src={`http://localhost:1337${thumbnail}`} 
               alt={name} 
-              className={styles.productImage} 
+              className={cx(styles.productImage, "image__img lazyloaded")}
               width={390}
               height={390}
             />

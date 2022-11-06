@@ -28,8 +28,6 @@ export const BurgerMenu: React.FC = ({
         // const response = await fromApi.getCategories();
         const response = await fetch("http://localhost:1337/api/categories");
         const data = await response.json();
-        // const categoriesRaw = response?.data;
-        // console.log("categoriesRaw", categoriesRaw);
         const formatCategories: ICategory[] = (data?.data || []).map((item: any) => ({
             id: item.id,
             name: item?.attributes?.name,

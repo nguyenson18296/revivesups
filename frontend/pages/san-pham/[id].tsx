@@ -31,8 +31,6 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
     addItem(data, 1)
   }, [addItem]);
 
-  console.log("product", product);
-
   return (
     <>
       <Head>

@@ -105,8 +105,6 @@ const CartPage: React.FC = () => {
     setallItems(JSON.parse(JSON.stringify(items)));
   }, [items]);
 
-  console.log("allItems", allItems);
-
   return (
     <>
       <Head>
