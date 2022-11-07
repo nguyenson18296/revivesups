@@ -9,7 +9,13 @@
 
 .productItemMedia {
     position: relative;
-    overflow: hidden;
+    width: 290px;
+    height: 290px;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .productImage {
@@ -21,6 +27,7 @@
     width: 100%;
     height: 100%;
     border-radius: 15px;
+    animation: 0.5s ease-out 0s 0.5 fadein;
 }
 
 
