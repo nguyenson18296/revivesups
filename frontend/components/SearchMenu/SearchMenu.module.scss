@@ -1,0 +1,114 @@
+.quickSearchContainer {
+    width: 100%;
+    max-width: var(--menu-max-width);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background-popover);
+    color: var(--color-text-popover);
+    position: relative;
+    padding: var(--space-outer);
+    z-index: 1;
+    transition: transform .3s ease;
+    color: var(--color-text-popover);
+}
+
+.quickSearchHeadingTitle {
+    font-family: var(--font-heading);
+    font-weight: var(--font-heading-weight);
+    font-style: var(--font-heading-style);
+    letter-spacing: var(--font-heading-base-letter-spacing);
+
+    @media (min-width: 45em) {
+        font-size: var(--font-size-heading-2-large);
+        line-height: var(--line-height-heading-2-large);
+        margin-bottom: var(--spacing-large);
+    }
+}
+
+.input {
+    border-color: var(--color-text-popover);
+    box-shadow: 0 0 0 1px var(--color-text-popover);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 480px;
+    height: 60px;
+    background-color: var(--color-background-popover);
+    pointer-events: all;
+    border: 1px solid var(--color-border-popover);
+    padding: calc(var(--spacing-unit) * 4) var(--spacing-medium);
+}
+
+.quickSearchWrapper {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: var(--spacing-small);
+    margin: calc(var(--spacing-small) * -1);
+    margin-top: var(--spacing-medium);
+}
+
+.quickSearchHeader {
+    font-size: var(--font-size-heading-3-base);
+    line-height: var(--line-height-heading-3-base);
+    margin-bottom: var(--spacing-medium);
+}
+
+.quickSearchResult {
+    color: var(--color-text-link-popover);
+    display: block;
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-small);
+    margin: calc(var(--spacing-small) * -1);
+    transition: opacity .25s;
+
+    &:hover {
+        background-color: var(--color-background-meta-popover);
+    }
+}
+
+.quickSearchImage {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin-right: var(--spacing-medium);
+    flex-shrink: 0;
+    background-color: var(--color-background-meta-popover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quickSearchDetail {
+    font-size: var(--font-size-body-small);
+    line-height: var(--line-height-body-small);
+    font-family: var(--font-body);
+    font-weight: var(--font-body-weight);
+    font-style: var(--font-body-style);
+    line-height: var(--line-height-body-base);
+    letter-spacing: var(--font-body-base-letter-spacing);
+    width: 100%;
+    overflow: hidden;
+}
+
+.quickSearchHeading {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 80%;
+}
+
+.quickSearchSubHeading {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 80%;
+    opacity: .6;
+}
+
+.quickSearchNoResult {
+
+}

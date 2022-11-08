@@ -313,21 +313,29 @@ p {
   width: 24px;
   right: 80px !important;
   top: 60px !important;
+  z-index: 200;
 }
 
 /*
 Sidebar wrapper styles
 Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
 */
-.bm-menu-wrap {
+.bm-menu-wrap-left {
   position: absolute;
   height: 100%;
   left: 0 !important;
   top: 0 !important;
 }
 
+.bm-menu-wrap-left {
+  position: absolute;
+  height: 100%;
+  right: 0 !important;
+  top: 0 !important;
+}
+
 /* General sidebar styles */
-.bm-menu {
+.bm-menu-wrap-left .bm-menu {
   background: #ffffff;
   padding-left: 80px;
   padding-right: 80px;
@@ -340,7 +348,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /* Wrapper for item list */
-.bm-item-list {
+.bm-menu-wrap-left .bm-item-list {
   color: #b8b7ad;
   padding: 0.8em;
 }
@@ -353,6 +361,20 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.bm-menu-wrap-right {
+  top: 0;
+  right: 0;
+  position: absolute;
+}
+
+.bm-menu-wrap-right .bm-menu {
+  background: #ffffff;
 }
 
 button,
