@@ -146,12 +146,15 @@ export const CheckoutForm: React.FC = () => {
                   onChange={handleChange}
                   value={address["city"]}
                 /> */}
-                <select className={cx(styles.input, styles.select)} name="city" onChange={handleChange} value={address["city"]}>
-                    {cities.map(item => (
-                        <option key={item.city}>
-                            {item.city}
-                        </option>
-                    ))}
+                <select
+                  className={cx(styles.input, styles.select)}
+                  name="city"
+                  onChange={handleChange}
+                  value={address["city"]}
+                >
+                  {cities.map((item) => (
+                    <option key={item.city}>{item.city}</option>
+                  ))}
                 </select>
               </div>
             </div>

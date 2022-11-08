@@ -11,7 +11,7 @@ import { IProductItemProps } from "../../constants/global";
 import styles from "./ProductItem.module.scss";
 
 interface IProductItem extends IProductItemProps {
-  canAddToCart: boolean;
+  canAddToCart?: boolean;
 }
 
 export const ProductItem: React.FC<IProductItem> = ({
