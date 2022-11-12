@@ -14,12 +14,20 @@ class ApiCallCreator {
     return createApiRequest("/order-line-items", HTTP_METHODS.POST, data);
   }
 
-  getProducts(search: string) {
+  getProducts(search?: string) {
     return createApiRequest(
       `/products?filters[name][$contains]=${search}&populate=thumbnail`,
       HTTP_METHODS.GET,
       {}
     );
+  }
+
+  getLatestProducts(page: number = 1, pageSize: number = 5) {
+    return createApiRequest(
+      `/products?pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail`,
+      HTTP_METHODS.GET,
+      {}
+    )
   }
 
   getPosts(search: string) {

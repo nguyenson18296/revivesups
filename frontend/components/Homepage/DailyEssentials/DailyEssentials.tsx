@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import Slider from "react-slick";
+import get from "lodash/get";
 
-import {
-  ProductItem,
-} from "../../Product/ProductItem";
+import { ProductItem } from "../../Product/ProductItem";
 import { IProductItemProps } from "../../../constants/global";
 import { SliderButton } from "../../SliderButton/SliderButton";
+import fromApi from "../../../services/api/api";
 
 import product from "../../../assets/product.png";
 import styles from "./DailyEssentials.module.scss";
@@ -49,36 +49,61 @@ const mockProducts: IProductItemProps[] = [
   },
 ];
 
+const settings = {
+  infinite: true,
+  swipe: true,
+  draggable: false,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  nextArrow: <SliderButton />,
+  prevArrow: <SliderButton left={true} />,
+};
+
 const SliderProducts: React.FC = () => {
-  const [isHovering, setIsHovering] = useState<boolean>(false);
+  // const [isHovering, setIsHovering] = useState<boolean>(false);
+  const [products, setProducts] = useState<any[]>([]);
 
-  const settings = {
-    infinite: true,
-    swipe: true,
-    draggable: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    nextArrow: <SliderButton isHover={isHovering}  />,
-    prevArrow: <SliderButton left={true} isHover={isHovering} />,
-  };
-
-  const onMouseEnter = useCallback(() => {
-    setIsHovering(true);
+  const getProducts = useCallback(async () => {
+    try {
+      const response = await fromApi.getLatestProducts();
+      const formatProducts = response?.data.map((item: any) => ({
+        id: item?.id,
+        name: get(item, "attributes.name", ""),
+        pricing: get(item, "attributes.price", ""),
+        thumbnail: get(item, "attributes.thumbnail.data[0].attributes.url", ""),
+        url: `san-pham/${item?.id}`,
+      }));
+      setProducts(formatProducts);
+    } catch (e) {
+      console.error("error", e);
+    }
   }, []);
 
-  const onMouseLeave = useCallback(() => {
-    setIsHovering(false);
-  }, []);
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
+
+  // const onMouseEnter = useCallback(() => {
+  //   setIsHovering(true);
+  // }, []);
+
+  // const onMouseLeave = useCallback(() => {
+  //   setIsHovering(false);
+  // }, []);
+
+  console.log("products", products);
+
+  console.log("products", products);
 
   return (
     <div
       className="slider-wrapper"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      // onMouseEnter={onMouseEnter}
+      // onMouseLeave={onMouseLeave}
     >
       <Slider {...settings}>
-        {mockProducts.map((item) => (
+        {products.map((item) => (
           <ProductItem key={item.id} {...item} />
         ))}
       </Slider>
@@ -86,9 +111,7 @@ const SliderProducts: React.FC = () => {
   );
 };
 
-export const DailyEssentials: React.FC<IProducSlider> = ({
-  heading
-}) => {
+export const DailyEssentials: React.FC<IProducSlider> = ({ heading }) => {
   return (
     <section className="section">
       <div className="section__inner">
