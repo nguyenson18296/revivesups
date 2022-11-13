@@ -165,7 +165,7 @@
   width: 40px 48px;
 }
 
-.minusButton {
+.minusButton, .plusButton {
   padding: 10px 8px;
 }
 
@@ -272,4 +272,15 @@
     border-color: var(--color-background-button-hover);
     background-color: var(--color-background-button-hover);
   }
+}
+
+.cartEmpty {
+  text-align: center;
+  margin-bottom: var(--spacing-extra-extra-large);
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-body-large);
+}
+
+.link {
+  text-decoration: underline;
 }
