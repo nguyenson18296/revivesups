@@ -62,7 +62,7 @@ export const Header: React.FC = () => {
                     </div>
                     <div className={styles.headerCenter}>
                         <a href="/">
-                            <Image src={headerLogo} alt="header-logo" className={styles.headerLogo} height={38} width={160} />
+                            <Image src={headerLogo} alt="header-logo" className={styles.headerLogo} height={80} width={300} />
                         </a>
                     </div>
                     <HeaderRight />

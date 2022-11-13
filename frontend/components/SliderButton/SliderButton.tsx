@@ -14,8 +14,8 @@ const prevButtonStyle: CSSProperties = {
     left: "calc(60px / -2)",
 }
 
-export const SliderButton: React.FC<({ left?: boolean, isHover: boolean, onClick?: () => void })> = ({
-    left, isHover, onClick
+export const SliderButton: React.FC<({ left?: boolean, onClick?: () => void })> = ({
+    left, onClick
 }) => {
     const customStyles: CSSProperties = left ? prevButtonStyle : nextButtonStyle
     return (
@@ -23,9 +23,9 @@ export const SliderButton: React.FC<({ left?: boolean, isHover: boolean, onClick
             className={cx(styles.button, "slider-button")}
             style={{
                 ...customStyles,
-                opacity: isHover ? 1 : 1,
-                marginLeft: isHover ? "0" : "-20px",
-                marginRight: isHover ? "0" : "-20px",
+                // opacity: isHover ? 1 : 1,
+                // marginLeft: isHover ? "0" : "-20px",
+                // marginRight: isHover ? "0" : "-20px",
             }}
             onClick={onClick}
         >

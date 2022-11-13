@@ -10,7 +10,13 @@ import { cities } from "../../constants/cities";
 
 import styles from "./CheckoutForm.module.scss";
 
-export const CheckoutForm: React.FC = () => {
+interface ICheckOutForm {
+  setCheckoutSuccess: (state: boolean) => void
+}
+
+export const CheckoutForm: React.FC<ICheckOutForm> = ({
+  setCheckoutSuccess
+}) => {
   const [address, setAddress] = useState({
     email: "",
     last_name: "",
@@ -22,7 +28,7 @@ export const CheckoutForm: React.FC = () => {
   });
   const [allItems, setallItems] = useState<any[]>([]);
 
-  const { items } = useCart();
+  const { items, emptyCart } = useCart();
 
   useEffect(() => {
     setallItems(JSON.parse(JSON.stringify(items)));
@@ -63,12 +69,8 @@ export const CheckoutForm: React.FC = () => {
           })
         )
           .then(() => {
-            toast.success(
-              "Đặt hàng thành công, chúng tôi sẽ liên hệ bạn để xác nhận",
-              {
-                theme: "colored",
-              }
-            );
+            setCheckoutSuccess(true);
+            emptyCart();
           })
           .catch(() => {
             toast.error("Đặt hàng thất bại, vui lòng thử lại", {

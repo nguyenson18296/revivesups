@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import Head from "next/head";
+import Link from "next/link";
 import cx from "classnames";
 import { Item, useCart } from "react-use-cart";
 
@@ -10,7 +11,6 @@ import { formatCurrency } from "../../utils/utils";
 import minus from "../../assets/minus.png";
 import plus from "../../assets/plus.png";
 import styles from "./CartPage.module.scss";
-import Link from "next/link";
 
 interface ICartItemProps {
   thumbnail: StaticImageData;
@@ -105,18 +105,10 @@ const CartPage: React.FC = () => {
     setallItems(JSON.parse(JSON.stringify(items)));
   }, [items]);
 
-  return (
-    <>
-      <Head>
-        <title>Giỏ hàng</title>
-      </Head>
-      <section>
-      <div className={styles.cartPage}>
-        <div className={styles.cartContainer}>
-          <header className={cx(styles.cartHeader, "ff-heading")}>
-            Giỏ hàng của bạn
-          </header>
-          <div className={styles.cartForm}>
+  const renderCartItems = () => {
+    if (allItems.length > 0) {
+      return (
+        <div className={styles.cartForm}>
             <div className={styles.cartFormHeader}>
               <div className={styles.headerProduct}>
                 Sản phẩm
@@ -157,6 +149,36 @@ const CartPage: React.FC = () => {
                 </div>
               </div>
           </div>
+      )
+    }
+    return (
+      <div className={styles.cartEmpty}>
+        <p>
+          Giỏ hàng hiện tại của bạn đang trống.
+        </p>
+        <p>
+          <Link href="/danh-muc/1">
+              <a className={styles.link}>
+                Tiếp tục mua hàng
+              </a>
+          </Link>
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      <Head>
+        <title>Giỏ hàng</title>
+      </Head>
+      <section>
+      <div className={styles.cartPage}>
+        <div className={styles.cartContainer}>
+          <header className={cx(styles.cartHeader, "ff-heading")}>
+            Giỏ hàng của bạn
+          </header>
+          {renderCartItems()}
         </div>
       </div>
     </section>

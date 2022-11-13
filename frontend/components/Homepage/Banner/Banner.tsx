@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import cx from "classnames";
 
@@ -17,7 +18,9 @@ export const Banner: React.FC = () => {
                   <p>Use code IMMUNE50 to buy one get one 50% off!</p>
                 </div>
                 <div className={styles.buttonWrapper}>
-                  <a className={styles.button}>Shop Now</a>
+                  <Link className={styles.button} href="danh-muc/1">
+                    <a className={styles.button}>Shop Now</a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -26,20 +29,20 @@ export const Banner: React.FC = () => {
       </section>
       <div className={styles.marqueeHorizontal}>
         <Marquee gradient={false}>
-            <div className={styles.marqueeText}>Revive Your Health</div>
-            <div className={styles.marqueeText}>Experience the Difference</div>
-            <div className={styles.marqueeText}>Revive Your Health</div>
-            <div className={styles.marqueeText}>Experience the Difference</div>
-            <div className={styles.marqueeText}>Revive Your Health</div>
-            <div className={styles.marqueeText}>Experience the Difference</div>
-            <div className={styles.marqueeText}>Revive Your Health</div>
-            <div className={styles.marqueeText}>Experience the Difference</div>
-            <div className={styles.marqueeText}>Revive Your Health</div>
-            <div className={styles.marqueeText}>Experience the Difference</div>
-            <div className={styles.marqueeText}>Revive Your Health</div>
-            <div className={styles.marqueeText}>Experience the Difference</div>
-            <div className={styles.marqueeText}>Revive Your Health</div>
-            <div className={styles.marqueeText}>Experience the Difference</div>
+          <div className={styles.marqueeText}>Revive Your Health</div>
+          <div className={styles.marqueeText}>Experience the Difference</div>
+          <div className={styles.marqueeText}>Revive Your Health</div>
+          <div className={styles.marqueeText}>Experience the Difference</div>
+          <div className={styles.marqueeText}>Revive Your Health</div>
+          <div className={styles.marqueeText}>Experience the Difference</div>
+          <div className={styles.marqueeText}>Revive Your Health</div>
+          <div className={styles.marqueeText}>Experience the Difference</div>
+          <div className={styles.marqueeText}>Revive Your Health</div>
+          <div className={styles.marqueeText}>Experience the Difference</div>
+          <div className={styles.marqueeText}>Revive Your Health</div>
+          <div className={styles.marqueeText}>Experience the Difference</div>
+          <div className={styles.marqueeText}>Revive Your Health</div>
+          <div className={styles.marqueeText}>Experience the Difference</div>
         </Marquee>
       </div>
     </>
