@@ -1,15 +1,28 @@
 .innerContent {
-    padding-right: calc((4px * 20) * 3.5);
-    padding-left: calc((4px * 20) * 3.5);
+    padding-right: calc(28 * 3.5px);
+    padding-left: calc(28 * 3.5px);
+
+    @media (min-width: 60em) {
+        padding-right: calc((4px * 20) * 3.5);
+        padding-left: calc((4px * 20) * 3.5);
+    }
 }
 
 .collectionGrid {
-    grid-template-columns: repeat(4,1fr);
-    grid-row-gap: calc(4px * 3);
-    row-gap: calc(4px * 5);
     display: grid;
-    grid-column-gap: calc(4px * 3);
-    column-gap: calc(4px * 5);
+    grid-column-gap: 12px;
+    column-gap: 20px;
+    grid-row-gap: 12px;
+    row-gap: 20px;
+
+    @media (min-width: 60em) {
+        grid-template-columns: repeat(4,1fr);
+    }
+
+    @media (min-width: 45em) {
+        grid-row-gap: 12px;
+        row-gap: 20px;
+    }
 }
 
 .collectionItem {
@@ -41,9 +54,14 @@
 }
 
 .innerFormulatedText {
-    padding-right: 80px;
-    padding-left: 80px;
+    padding-left: 28px;
+    padding-right: 28px;
     margin-bottom: -50px;
+
+    @media (min-width: 60em) {
+        padding-right: 80px;
+        padding-left: 80px;
+    }
 }
 
 .subHeading {
@@ -55,11 +73,18 @@
 }
 
 .innerFeatures {
-    grid-template-columns: repeat(4,1fr);
     display: flex;
     justify-content: space-evenly;
-    margin: 50px;
+    margin: 50px 20px;
     width: 100%;
+
+    @media (min-width: 60em) {
+        grid-template-columns: repeat(4,1fr);
+        display: flex;
+        justify-content: space-evenly;
+        margin: 50px;
+        width: 100%;
+    }
 }
 
 .featureItem {

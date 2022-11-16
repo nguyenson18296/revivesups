@@ -7,6 +7,7 @@ body {
   padding: 0;
   margin: 0;
   color: var(--color-text);
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -231,11 +232,36 @@ h4 {
 }
 
 .section__inner {
-  padding-right: 80px;
-  padding-left: 80px;
+  padding-left: 28px;
+  padding-right: 28px;
   margin-left: auto;
   margin-right: auto;
   max-width: var(--max-width);
+}
+
+@media (min-width: 60em) {
+  .section__inner {
+    padding-right: 80px;
+    padding-left: 80px;
+  }
+
+  .bm-menu-wrap-left .bm-menu {
+    padding-left: 80px;
+  }
+
+  .bm-menu-wrap-left {
+    width: 640px !important;
+  }
+
+  .bm-menu-wrap-right {
+    width: 640px !important;
+  }
+}
+
+@media (max-width: 440px) {
+  .bm-menu-wrap-right {
+    width: 100% !important;
+  }
 }
 
 p {
@@ -330,6 +356,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-menu-wrap-left {
   position: absolute;
   height: 100%;
+  width: 100% !important;
   right: 0 !important;
   top: 0 !important;
 }
@@ -337,8 +364,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* General sidebar styles */
 .bm-menu-wrap-left .bm-menu {
   background: #ffffff;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-size: 1.15em;
 }
 
@@ -350,7 +377,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Wrapper for item list */
 .bm-menu-wrap-left .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
 }
 
 /* Individual item */

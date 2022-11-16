@@ -1,5 +1,5 @@
 .product {
-    padding: 0 var(--space-outer);
+    padding: 0 28px;
     margin: var(--spacing-large) auto var(--spacing-small);
     max-width: var(--max-width);
 
@@ -95,17 +95,32 @@
     position: relative;
     background-color: #1a3b6f;
     color: #fff;
-    cursor: pointer;
+    padding: 12px 24px;
+    font-size: 12px;
 
     @media (min-width: 45em) {
         padding: 16px 28px;
         font-size: var(--font-size-body-small);
         line-height: var(--line-height-body-small);
     }
+}
 
+.btnSubmit {
     &:hover {
+        cursor: pointer;
         border-color: var(--color-text);
         background-color: #ffffff;
         color: #1a3b6f;
+    }
+}
+
+.productDescription {
+    padding-left: 28px;
+    padding-right: 28px;
+    margin-bottom: -50px;
+
+    @media (min-width: 60em) {
+        padding-right: var(--space-outer);
+        padding-left: var(--space-outer);
     }
 }

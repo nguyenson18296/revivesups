@@ -29,6 +29,7 @@
 }
 
 .cartFormHeader {
+  display: none;
   @media (min-width: 45em) {
     display: flex;
     justify-content: space-between;

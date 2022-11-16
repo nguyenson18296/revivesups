@@ -30,6 +30,36 @@
     animation: 0.5s ease-out 0s 0.5 fadein;
 }
 
+.productBadges {
+    z-index: 10;
+    flex-shrink: 0;
+    position: absolute;
+    top: var(--spacing-medium-large);
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    white-space: nowrap;
+    pointer-events: none;
+    font-size: var(--font-size-body-x-small);
+    line-height: var(--line-height-body-x-small);
+
+    .productSoldOut {
+        background-color: var(--color-background-sold-badge);
+        color: var(--color-text-sold-badge);
+    }
+
+    .productItemBadge {
+        display: flex;
+        align-items: center;
+        border-radius: 40px;
+        height: var(--badge-height);
+        padding: 4px 16px;
+        color: #fff;
+        box-shadow: 0 1px 1px #00000014;
+        font-weight: var(--font-body-bold-weight);
+    }
+}
+
 
 .productItemText {
     text-align: center;

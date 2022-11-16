@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Head from "next/head";
 import cx from "classnames";
@@ -23,6 +23,7 @@ interface IProductDetail {
 
 const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
   const { addItem } = useCart();
+  const [isSoldOut, setIsSoldOut] = useState<boolean>(false);
 
   const onAddItemToCart = useCallback((data: any) => {
     toast.success("Thêm sản phẩm vào giỏ hàng thành công!", {
@@ -30,6 +31,10 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
     });
     addItem(data, 1)
   }, [addItem]);
+
+  useEffect(() => {
+    setIsSoldOut(get(product, "data.attributes.sold_out", false));
+  }, [product]);
 
   return (
     <>
@@ -115,25 +120,31 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
                   </ul>
                 </div>
                 <div className={styles.productFormControlsGroup}>
-                  <button
-                    className={styles.btnSecondary}
-                    onClick={() => onAddItemToCart({
-                      id: get(product, "data.id", ""),
-                      url: `/san-pham/${get(product, "data.id", "")}`,
-                      price: get(product, "data.attributes.price", 0),
-                      thumbnail: get(product, "data.attributes.thumbnail.data[0].attributes.url", ""),
-                      name: get(product, "data.attributes.name", "")
-                    })}
-                  >
-                    Thêm vào giỏ hàng&nbsp;&nbsp;-&nbsp;&nbsp;<span>{formatCurrency(get(product, "data.attributes.price", ""))}</span>
-                  </button>
+                  {isSoldOut ? (
+                    <div className={styles.btnSecondary}>
+                      Hết hàng
+                    </div>
+                  ) : (
+                    <button
+                      className={cx(styles.btnSecondary, styles.btnSubmit)}
+                      onClick={() => onAddItemToCart({
+                        id: get(product, "data.id", ""),
+                        url: `/san-pham/${get(product, "data.id", "")}`,
+                        price: get(product, "data.attributes.price", 0),
+                        thumbnail: get(product, "data.attributes.thumbnail.data[0].attributes.url", ""),
+                        name: get(product, "data.attributes.name", "")
+                      })}
+                    >
+                      Thêm vào giỏ hàng&nbsp;&nbsp;-&nbsp;&nbsp;<span>{formatCurrency(get(product, "data.attributes.price", ""))}</span>
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section>
+      <section className={styles.productDescription}>
         <div dangerouslySetInnerHTML={{
           __html: get(product, "data.attributes.description", "")
         }}>

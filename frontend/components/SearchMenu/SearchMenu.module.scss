@@ -7,10 +7,18 @@
     background-color: var(--color-background-popover);
     color: var(--color-text-popover);
     position: relative;
-    padding: var(--space-outer);
     z-index: 1;
     transition: transform .3s ease;
     color: var(--color-text-popover);
+    padding: 24px;
+
+    @media (min-width: 60em) {
+        padding: var(--space-outer);
+    }
+
+    @media (max-width: 440px) {
+        padding-top: 90px;
+    }
 }
 
 .quickSearchHeadingTitle {
@@ -38,6 +46,10 @@
     pointer-events: all;
     border: 1px solid var(--color-border-popover);
     padding: calc(var(--spacing-unit) * 4) var(--spacing-medium);
+
+    @media (max-width: 440px) {
+        width: 320px;
+    }
 }
 
 .quickSearchWrapper {

@@ -4,6 +4,11 @@
     background-color: var(--color-background-meta);
     display: flex;
     border-radius: 25px;
+
+    @media (max-width: 45em) {
+        overflow-x: auto;
+        justify-content: left;
+    }
 }
 
 .buttonBar {
@@ -39,6 +44,11 @@
     margin-left: 15px;
     border-radius: 10px;
     padding: 10px 15px;
+    width: max-content;
+
+    @media (max-width: 45em) {
+        font-size: 12px;
+    }
 }
 
 .filterButtonActive {
