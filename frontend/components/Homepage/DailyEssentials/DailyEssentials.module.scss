@@ -9,9 +9,16 @@
 
 .heading {
     text-align: center;
-    margin-right: auto;
-    margin-left: auto;
-    font-size: var(--font-size-heading-1-base);
-    line-height: var(--line-height-heading-1-base);
-    max-width: 36rem;
+    // margin-right: auto;
+    // margin-left: auto;
+    // font-size: var(--font-size-heading-1-base);
+    // line-height: var(--line-height-heading-1-base);
+    // max-width: 36rem;
+    font-size: 23px;
+    line-height: 1.29;
+
+    @media (min-width: 45em) {
+        font-size: 40px;
+        line-height: 1.08;
+    }
 }

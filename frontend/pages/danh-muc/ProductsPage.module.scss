@@ -8,9 +8,13 @@
 }
 
 .collectionHeaderInner {
-    max-width: var(--max-width);
-    padding: 0 var(--space-outer);
     margin: 0 auto;
+    padding: 0 28px;
+
+    @media (min-width: 60em) {
+        max-width: var(--max-width);
+        padding: 0 var(--space-outer);
+    }
 }
 
 .colectionHeader {

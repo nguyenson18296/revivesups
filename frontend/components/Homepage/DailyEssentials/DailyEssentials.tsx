@@ -14,41 +14,6 @@ interface IProducSlider {
   heading: string;
 }
 
-const mockProducts: IProductItemProps[] = [
-  {
-    id: "1",
-    name: "Immune Defense 1",
-    description: "Ultimate Immune Support ",
-    pricing: "$39.99",
-    url: "",
-    thumbnail: product,
-  },
-  {
-    id: "2",
-    name: "Immune Defense 2",
-    description: "Ultimate Immune Support ",
-    pricing: "$39.99",
-    url: "",
-    thumbnail: product,
-  },
-  {
-    id: "3",
-    name: "Immune Defense 3",
-    description: "Ultimate Immune Support ",
-    pricing: "$39.99",
-    url: "",
-    thumbnail: product,
-  },
-  {
-    id: "5",
-    name: "Immune Defense 4",
-    description: "Ultimate Immune Support ",
-    pricing: "$39.99",
-    url: "",
-    thumbnail: product,
-  },
-];
-
 const settings = {
   infinite: true,
   swipe: true,
@@ -58,6 +23,32 @@ const settings = {
   slidesToScroll: 1,
   nextArrow: <SliderButton />,
   prevArrow: <SliderButton left={true} />,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
 };
 
 const SliderProducts: React.FC = () => {
@@ -83,18 +74,6 @@ const SliderProducts: React.FC = () => {
   useEffect(() => {
     getProducts();
   }, [getProducts]);
-
-  // const onMouseEnter = useCallback(() => {
-  //   setIsHovering(true);
-  // }, []);
-
-  // const onMouseLeave = useCallback(() => {
-  //   setIsHovering(false);
-  // }, []);
-
-  console.log("products", products);
-
-  console.log("products", products);
 
   return (
     <div

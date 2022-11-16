@@ -17,4 +17,5 @@ export interface IProductItemProps {
   pricing: string;
   description?: string;
   thumbnail: StaticImageData;
+  sold_out: boolean;
 }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useCart } from "react-use-cart";
 import { toast } from "react-toastify";
 import cx from "classnames";
+import noop from "lodash/noop";
 
 import { formatCurrency } from "../../utils/utils";
 import { IProductItemProps } from "../../constants/global";
@@ -21,7 +22,8 @@ export const ProductItem: React.FC<IProductItem> = ({
   pricing,
   url,
   thumbnail,
-  canAddToCart
+  canAddToCart,
+  sold_out
 }) => {
   const { addItem } = useCart();
 
@@ -44,6 +46,13 @@ export const ProductItem: React.FC<IProductItem> = ({
               width={390}
               height={390}
             />
+            <div className={styles.productBadges}>
+              {sold_out && (
+                <div className={cx(styles.productSoldOut, styles.productItemBadge)}>
+                  Hết hàng
+                </div>
+              )}
+            </div>
           </a>
         </Link>
       </div>
@@ -59,7 +68,7 @@ export const ProductItem: React.FC<IProductItem> = ({
       </div>
       {canAddToCart && (
         <input
-          onClick={() => onAddItemToCart({
+          onClick={sold_out ? noop : () => onAddItemToCart({
             id,
             thumbnail,
             price: +pricing,
@@ -68,7 +77,7 @@ export const ProductItem: React.FC<IProductItem> = ({
           })}
           type="submit"
           name="add"
-          value="Add to cart"
+          value={sold_out ? "Hết hàng" : "Thêm vào giỏ hàng"}
           className="button-primay"
         />
       )}

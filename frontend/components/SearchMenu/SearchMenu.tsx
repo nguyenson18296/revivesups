@@ -54,7 +54,6 @@ export const SearchMenu: React.FC<ISearchMenuProps> = ({
     searchProducts();
   }, [searchProducts]);
 
-  console.log("posts", posts);
 
   const renderSearchResult = () => {
     if (products.length > 0 || posts.length > 0) {
