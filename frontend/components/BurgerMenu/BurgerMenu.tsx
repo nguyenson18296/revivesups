@@ -8,7 +8,7 @@ import kebabCase from "lodash/kebabCase";
 import deburr from "lodash/deburr";
 import take from "lodash/take";
 
-import fromApi from "../../services/api/api";
+import { API_ENDPOINT_URL } from "../../constants/global";
 
 import closeIcon from "../../assets/close.png";
 import styles from "./BurgerMenu.module.scss";
@@ -24,7 +24,7 @@ export const BurgerMenu: React.FC = ({}) => {
   const [categories, setCategories] = useState<ICategory[]>([]);
 
   const getCategories = useCallback(async () => {
-    const response = await fetch("http://localhost:1337/api/categories");
+    const response = await fetch(`${API_ENDPOINT_URL}/categories`);
     const data = await response.json();
     const formatCategories: ICategory[] = (data?.data || []).map(
       (item: any) => ({

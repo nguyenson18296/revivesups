@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
+import { DOMAIN_URL } from "../../constants/global";
+
 import styles from "./BlogThumbnail.module.scss";
 
 interface IBlogThumbnail {
@@ -19,7 +21,7 @@ export const BlogThumbnail: React.FC<IBlogThumbnail> = ({
     return (
         <a href={`/bai-viet/${url}`}>
             <article className={styles.card}>
-                <img src={`http://localhost:1337${thumbnail}`} alt="thumbnail" className={styles.cardHero} />
+                <img src={`${DOMAIN_URL}${thumbnail}`} alt="thumbnail" className={styles.cardHero} />
                 <div className={styles.cardContent}>
                     <h2 className={styles.cardHeading}>
                             {title}

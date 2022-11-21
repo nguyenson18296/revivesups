@@ -3,6 +3,7 @@ import get from "lodash/get";
 import Head from "next/head";
 
 import { BlogThumbnail } from "../../components/Blog/BlogThumbnail";
+import { API_ENDPOINT_URL } from "../../constants/global";
 
 import styles from "./Blogs.module.scss";
 
@@ -36,7 +37,7 @@ const Blogs: React.FC<IBlogProps> = ({ articles }) => {
 };
 
 export async function getStaticProps() {
-  const res = await fetch(`http://localhost:1337/api/blogs?populate=thumbnail`);
+  const res = await fetch(`${API_ENDPOINT_URL}/blogs?populate=thumbnail`);
   const data = await res.json();
 
   if (!data) {

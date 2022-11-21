@@ -8,7 +8,9 @@ import cx from "classnames";
 import noop from "lodash/noop";
 
 import { formatCurrency } from "../../utils/utils";
+import { DOMAIN_URL } from "../../constants/global";
 import { IProductItemProps } from "../../constants/global";
+
 import styles from "./ProductItem.module.scss";
 
 interface IProductItem extends IProductItemProps {
@@ -40,7 +42,7 @@ export const ProductItem: React.FC<IProductItem> = ({
         <Link href={`/${url}`}>
           <a>
             <img
-              src={`http://localhost:1337${thumbnail}`} 
+              src={`${DOMAIN_URL}${thumbnail}`} 
               alt={name} 
               className={cx(styles.productImage, "image__img lazyloaded")}
               width={390}

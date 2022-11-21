@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useCart } from "react-use-cart";
 
 import { formatCurrency } from "../../utils/utils";
+import { DOMAIN_URL } from "../../constants/global";
 import styles from "./CartReview.module.scss";
 
 export const CartReview: React.FC = () => {
@@ -26,7 +27,7 @@ export const CartReview: React.FC = () => {
                       <div className={styles.productImage}>
                         <div className={styles.productThumbnail}>
                           <div className={styles.productThumbnailWrapper}>
-                            <img src={`http://localhost:1337${item.thumbnail}`} alt="product" />
+                            <img src={`${DOMAIN_URL}${item.thumbnail}`} alt="product" />
                           </div>
                           <span className={styles.productQuantity}>
                             {item.quantity}

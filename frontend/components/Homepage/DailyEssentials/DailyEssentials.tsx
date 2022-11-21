@@ -52,7 +52,6 @@ const settings = {
 };
 
 const SliderProducts: React.FC = () => {
-  // const [isHovering, setIsHovering] = useState<boolean>(false);
   const [products, setProducts] = useState<any[]>([]);
 
   const getProducts = useCallback(async () => {
@@ -78,12 +77,10 @@ const SliderProducts: React.FC = () => {
   return (
     <div
       className="slider-wrapper"
-      // onMouseEnter={onMouseEnter}
-      // onMouseLeave={onMouseLeave}
     >
       <Slider {...settings}>
         {products.map((item) => (
-          <ProductItem key={item.id} {...item} />
+          <ProductItem key={item.id} {...item} canAddToCart />
         ))}
       </Slider>
     </div>

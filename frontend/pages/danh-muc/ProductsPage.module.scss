@@ -46,13 +46,14 @@
     row-gap: var(--spacing-large);
     padding-top: var(--spacing-large);
 
-    @media (min-width: 60em) {
-        grid-template-columns: repeat(4, 1fr);
+    @media (min-width: 45em) {
+        grid-row-gap: 60px;
+        row-gap: 60px;
+        grid-template-columns: repeat(2,1fr);
     }
 
-    @media (min-width: 45em) {
-        grid-row-gap: var(--spacing-extra-large);
-        row-gap: var(--spacing-extra-large);
+    @media (min-width: 60em) {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 

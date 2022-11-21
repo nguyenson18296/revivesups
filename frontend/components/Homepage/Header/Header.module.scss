@@ -3,7 +3,11 @@
     color: var(--color-text-header);
     transition: background-color .25s ease-in-out;
     background-color: var(--color-background-header);
-    padding: 0 40px 0 40px;
+    padding: 0 20px 0 20px;
+
+    @media (min-width: 45em) {
+        padding: 0 40px 0 40px;
+    }
 }
 
 .innerHeader {
@@ -40,6 +44,8 @@
 
 .headerCenter {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .headerRight {
