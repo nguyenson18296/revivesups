@@ -259,8 +259,13 @@ h4 {
 }
 
 @media (max-width: 440px) {
-  .bm-menu-wrap-right {
+  .bm-menu-wrap-right .bm-menu-wrap-left {
     width: 100% !important;
+  }
+
+  .bm-menu-wrap-left {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -353,19 +358,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
   top: 0 !important;
 }
 
-.bm-menu-wrap-left {
-  position: absolute;
-  height: 100%;
-  width: 100% !important;
-  right: 0 !important;
-  top: 0 !important;
-}
-
 /* General sidebar styles */
 .bm-menu-wrap-left .bm-menu {
   background: #ffffff;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
   font-size: 1.15em;
 }
 

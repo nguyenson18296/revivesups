@@ -8,6 +8,7 @@ import get from "lodash/get";
 
 import fromApi from "../../services/api/api";
 import { formatCurrency } from "../../utils/utils";
+import { DOMAIN_URL } from "../../constants/global";
 
 import closeIcon from "../../assets/close.png";
 
@@ -72,7 +73,7 @@ export const SearchMenu: React.FC<ISearchMenuProps> = ({
                 >
                   <div className={styles.quickSearchImage}>
                     <img
-                      src={`http://localhost:1337${get(
+                      src={`${DOMAIN_URL}${get(
                         item,
                         "attributes.thumbnail.data[0].attributes.url",
                         ""
@@ -107,7 +108,7 @@ export const SearchMenu: React.FC<ISearchMenuProps> = ({
                 >
                   <div className={styles.quickSearchImage}>
                     <img
-                      src={`http://localhost:1337${get(
+                      src={`${DOMAIN_URL}${get(
                         item,
                         "attributes.thumbnail.data.attributes.url",
                         ""

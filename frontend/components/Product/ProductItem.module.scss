@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0 15px;
 }
 
 .productItemMedia {
@@ -62,6 +63,7 @@
 
 
 .productItemText {
+    margin-top: 15px;
     text-align: center;
     font-size: 15px;
     line-height: 1.56;

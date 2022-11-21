@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import get from "lodash/get";
 
 import { DailyEssentials } from "../../components/Homepage/DailyEssentials/DailyEssentials";
-import { API_ENDPOINT_URL } from "../../constants/global";
+import { API_ENDPOINT_URL, DOMAIN_URL } from "../../constants/global";
 import { formatCurrency } from "../../utils/utils";
 
 import star from "../../assets/pointed-star.png";
@@ -49,7 +49,7 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
             <div className={styles.productMediaContainer}>
               <div className={styles.productMediaItem}>
                 <img
-                  src={`http://localhost:1337` + get(product, "data.attributes.thumbnail.data[0].attributes.url", "")}
+                  src={DOMAIN_URL + get(product, "data.attributes.thumbnail.data[0].attributes.url", "")}
                   alt="product-detail"
                   className={styles.productImage}
                   width={640}

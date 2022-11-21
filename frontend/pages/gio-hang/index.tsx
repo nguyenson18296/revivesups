@@ -7,6 +7,7 @@ import cx from "classnames";
 import { Item, useCart } from "react-use-cart";
 
 import { formatCurrency } from "../../utils/utils";
+import { DOMAIN_URL } from "../../constants/global";
 
 import minus from "../../assets/minus.png";
 import plus from "../../assets/plus.png";
@@ -46,7 +47,7 @@ const CartItem: React.FC<ICartItemProps> = ({
       <div className={styles.cartItemImageWrapper}>
         <div className={styles.imageWrapper}>
           <img
-            src={`http://localhost:1337${thumbnail}`}
+            src={`${DOMAIN_URL}${thumbnail}`}
             alt={name}
             width={120}
             height={120}
