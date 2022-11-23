@@ -10,6 +10,7 @@ interface ICategory {
   id: string;
   name: string;
   url: string;
+  slug: string;
 }
 
 const Categories: React.FC = () => {
@@ -23,6 +24,7 @@ const Categories: React.FC = () => {
       (item: any) => ({
         id: item.id,
         name: item?.attributes?.name,
+        slug: item?.attributes?.slug,
         url: kebabCase(deburr(item?.attributes?.name)),
       })
     );
@@ -36,12 +38,12 @@ const Categories: React.FC = () => {
   return (
     <div className={styles.filterBar}>
       <ul className={styles.buttonBar}>
-        {categories.map((item, index) => (
+        {categories.map((item, _index) => (
           <button key={item.id} className={styles.loadCollection}>
-            {router?.query?.id === item.id.toString() ? (
+            {router?.query?.slug === item?.slug ? (
               <li className={styles.filterButtonActive}>{item.name}</li>
             ) : (
-              <a href={item.id}>
+              <a href={item.slug}>
                 <li className={styles.filterButton}>{item.name}</li>
               </a>
             )}

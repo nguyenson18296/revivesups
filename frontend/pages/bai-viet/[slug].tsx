@@ -42,11 +42,11 @@ const PostDetail: React.FC<PostDetail> = ({ post }) => {
 
 // This function gets called at build time
 export async function getStaticPaths() {
-  const res = await fetch(`${API_ENDPOINT_URL}/blogs?populate=thumbnail`);
-  const products = await res.json();
+  const res = await fetch(`${API_ENDPOINT_URL}/blogs`);
+  const posts = await res.json();
 
-  const paths = (products?.data || []).map((product: any) => ({
-    params: { id: product?.id?.toString() },
+  const paths = (posts?.data || []).map((post: any) => ({
+    params: { id: post?.id?.toString(), slug: post?.attributes?.slug },
   }));
 
   return { paths, fallback: false };
@@ -54,9 +54,7 @@ export async function getStaticPaths() {
 
 // This also gets called at build time
 export async function getStaticProps({ params }: { params: any }) {
-  const res = await fetch(
-    `${API_ENDPOINT_URL}/blogs/${params.id}?populate=thumbnail`
-  );
+  const res = await fetch(`${API_ENDPOINT_URL}/blogs/${params?.slug}`);
   const post = await res.json();
 
   return { props: { post } };

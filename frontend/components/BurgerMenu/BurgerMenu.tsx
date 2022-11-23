@@ -30,7 +30,7 @@ export const BurgerMenu: React.FC = ({}) => {
       (item: any) => ({
         id: item.id,
         name: item?.attributes?.name,
-        url: kebabCase(deburr(item?.id)),
+        url: kebabCase(deburr(item?.attributes?.slug)),
       })
     );
     setCategories(take(formatCategories, 3));

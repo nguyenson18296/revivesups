@@ -158,19 +158,22 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
 
 // This function gets called at build time
 export async function getStaticPaths() {
-  const res = await fetch(`${API_ENDPOINT_URL}/products?populate=thumbnail`);
+  const res = await fetch(`${API_ENDPOINT_URL}/products`);
   const products = await res.json();
 
-  const paths = (products?.data || []).map((product: any) => ({
-    params: { id: product?.id?.toString() },
-  }))
+  const paths = (products?.data || []).map((product: any) => {
+    console.log("product", product);
+    return ({
+      params: { id: product?.id?.toString(), slug: product?.attributes?.slug },
+    })
+  })
 
   return { paths, fallback: false }
 }
 
 // This also gets called at build time
 export async function getStaticProps({ params }: { params: any}) {
-  const res = await fetch(`${API_ENDPOINT_URL}/products/${params.id}?populate=thumbnail`)
+  const res = await fetch(`${API_ENDPOINT_URL}/products/${params.slug}`)
   const product = await res.json();
 
   return { props: { product } };

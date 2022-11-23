@@ -76,6 +76,10 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }

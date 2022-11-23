@@ -13,7 +13,7 @@ module.exports = createCoreController(
         const { id } = ctx.params;
         const response = await strapi.db.query("api::category.category").findOne({
           where: {
-            id
+            slug: id
           },
           populate: {
             products: {

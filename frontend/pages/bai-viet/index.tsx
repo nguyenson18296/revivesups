@@ -21,7 +21,7 @@ const Blogs: React.FC<IBlogProps> = ({ articles }) => {
         {(articles?.data || []).map((item: any) => (
           <BlogThumbnail
             key={item?.id}
-            url={item?.id}
+            url={get(item, "attributes.slug", "")}
             title={get(item, "attributes.title", "")}
             subHeading={get(item, "attributes.subheading", "")}
             thumbnail={get(
