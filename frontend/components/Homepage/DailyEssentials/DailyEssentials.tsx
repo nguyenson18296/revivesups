@@ -62,7 +62,8 @@ const SliderProducts: React.FC = () => {
         name: get(item, "attributes.name", ""),
         pricing: get(item, "attributes.price", ""),
         thumbnail: get(item, "attributes.thumbnail.data[0].attributes.url", ""),
-        url: `san-pham/${item?.id}`,
+        url: `san-pham/${get(item, "attributes.slug", "")}`,
+        sold_out: get(item, "attributes.sold_out", false),
       }));
       setProducts(formatProducts);
     } catch (e) {

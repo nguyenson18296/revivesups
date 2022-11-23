@@ -1,5 +1,9 @@
 .form {
-  width: 50%;
+  width: 100%;
+
+  @media (min-width: 60em) {
+    width: 50%;
+  }
 }
 
 .stepSection {
@@ -91,6 +95,9 @@
     justify-content: space-between;
     margin-top: 1.5em;
   }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   z-index: 2;
   position: relative;
   margin-top: 1em;

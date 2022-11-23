@@ -6,9 +6,6 @@ import { NewProduct } from "../components/Homepage/NewProduct/NewProduct";
 import { OurMission } from "../components/Homepage/OurMission/OurMission";
 import { Categories } from "../components/Homepage/Categories/Categories";
 import { DailyEssentials } from "../components/Homepage/DailyEssentials/DailyEssentials";
-import { Header } from "../components/Homepage/Header/Header";
-
-import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (

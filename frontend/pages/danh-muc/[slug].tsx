@@ -23,7 +23,7 @@ const ProductsPage: React.FC<ICategoryProducts> = ({ category }) => {
     const formatProducts: IProductItemProps[] = products.map((item: any) => ({
       id: item.id.toString(),
       name: get(item, "attributes.name", ""),
-      url: `san-pham/${item.id}`,
+      url: `san-pham/${item?.attributes?.slug}`,
       pricing: get(item, "attributes.price", ""),
       sold_out: get(item, "attributes.sold_out", false),
       thumbnail: get(item, "attributes.thumbnail.data[0].attributes.url", ""),
@@ -71,9 +71,12 @@ export async function getStaticPaths() {
   const res = await fetch(`${API_ENDPOINT_URL}/categories`);
   const categories = await res.json();
 
-  const paths = (categories?.data || []).map((category: any) => ({
-    params: { id: category?.id?.toString() },
-  }));
+
+  const paths = (categories?.data || []).map((category: any) => {
+    return ({
+      params: { id: category?.id?.toString(), slug: category?.attributes?.slug },
+    })
+  })
 
   return { paths, fallback: false };
 }
@@ -81,7 +84,7 @@ export async function getStaticPaths() {
 // This also gets called at build time
 export async function getStaticProps({ params }: { params: any }) {
   const response = await fetch(
-    `${API_ENDPOINT_URL}/categories/${params.id}?populate=*`
+    `${API_ENDPOINT_URL}/categories/${params.slug}`
   );
   const category = await response.json();
 

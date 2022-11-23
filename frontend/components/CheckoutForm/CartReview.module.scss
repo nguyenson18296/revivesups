@@ -1,4 +1,6 @@
 .cartPreviewWrapper {
+  width: 100%;
+
   @media (min-width: 1000px) {
     width: 50%;
     padding-left: 4%;
@@ -67,6 +69,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+    padding: 10px 0;
 }
 
 .productContent {
