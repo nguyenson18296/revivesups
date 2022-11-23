@@ -34,9 +34,7 @@ const ProductsPage: React.FC<ICategoryProducts> = ({ category }) => {
   return (
     <>
       <Head>
-          <title>
-              Danh mục
-          </title>
+        <title>Danh mục</title>
       </Head>
       <section className={styles.collectionSection}>
         <div className={styles.collectionHeader}>
@@ -71,21 +69,21 @@ export async function getStaticPaths() {
   const res = await fetch(`${API_ENDPOINT_URL}/categories`);
   const categories = await res.json();
 
-
   const paths = (categories?.data || []).map((category: any) => {
-    return ({
-      params: { id: category?.id?.toString(), slug: category?.attributes?.slug },
-    })
-  })
+    return {
+      params: {
+        id: category?.id?.toString(),
+        slug: category?.attributes?.slug,
+      },
+    };
+  });
 
   return { paths, fallback: false };
 }
 
 // This also gets called at build time
 export async function getStaticProps({ params }: { params: any }) {
-  const response = await fetch(
-    `${API_ENDPOINT_URL}/categories/${params.slug}`
-  );
+  const response = await fetch(`${API_ENDPOINT_URL}/categories/${params.slug}`);
   const category = await response.json();
 
   return { props: { category } };

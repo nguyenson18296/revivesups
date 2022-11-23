@@ -25,16 +25,19 @@ export const ProductItem: React.FC<IProductItem> = ({
   url,
   thumbnail,
   canAddToCart,
-  sold_out
+  sold_out,
 }) => {
   const { addItem } = useCart();
 
-  const onAddItemToCart = useCallback((data: any) => {
-    toast.success("Thêm sản phẩm vào giỏ hàng thành công!", {
-      theme: "colored"
-    });
-    addItem(data, 1)
-  }, [addItem]);
+  const onAddItemToCart = useCallback(
+    (data: any) => {
+      toast.success("Thêm sản phẩm vào giỏ hàng thành công!", {
+        theme: "colored",
+      });
+      addItem(data, 1);
+    },
+    [addItem]
+  );
 
   return (
     <div className={styles.productItem}>
@@ -42,15 +45,17 @@ export const ProductItem: React.FC<IProductItem> = ({
         <Link href={`/${url}`}>
           <a>
             <img
-              src={`${DOMAIN_URL}${thumbnail}`} 
-              alt={name} 
+              src={`${DOMAIN_URL}${thumbnail}`}
+              alt={name}
               className={cx(styles.productImage, "image__img lazyloaded")}
               width={390}
               height={390}
             />
             <div className={styles.productBadges}>
               {sold_out && (
-                <div className={cx(styles.productSoldOut, styles.productItemBadge)}>
+                <div
+                  className={cx(styles.productSoldOut, styles.productItemBadge)}
+                >
                   Hết hàng
                 </div>
               )}
@@ -70,13 +75,18 @@ export const ProductItem: React.FC<IProductItem> = ({
       </div>
       {canAddToCart && (
         <input
-          onClick={sold_out ? noop : () => onAddItemToCart({
-            id,
-            thumbnail,
-            price: +pricing,
-            url,
-            name
-          })}
+          onClick={
+            sold_out
+              ? noop
+              : () =>
+                  onAddItemToCart({
+                    id,
+                    thumbnail,
+                    price: +pricing,
+                    url,
+                    name,
+                  })
+          }
           type="submit"
           name="add"
           value={sold_out ? "Hết hàng" : "Thêm vào giỏ hàng"}

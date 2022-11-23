@@ -7,15 +7,15 @@
 }
 
 .stepSection {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   &:first-child {
     padding-top: 0;
   }
@@ -71,7 +71,7 @@
 }
 
 .stepFooter {
-    display: block;
+  display: block;
 }
 
 .stepFooterWrapper {
@@ -104,28 +104,32 @@
 }
 
 .returnToCart {
-    text-decoration: none;
-    color: #1878b9;
-    -webkit-transition: color 0.2s ease-in-out;
-    transition: color 0.2s ease-in-out;
+  text-decoration: none;
+  color: #1878b9;
+  -webkit-transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 
 .continueButton {
-    cursor: pointer;
-    display: inline-block;
-    background-color: #1878b9;
-    background-clip: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 1px transparent solid;
-    border-radius: 5px;
-    color: white;
-    font-weight: 500;
-    padding: 0.4em 1.7em;
-    text-align: center;
-    position: relative;
-    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  display: inline-block;
+  background-color: #1878b9;
+  background-clip: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px transparent solid;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  padding: 0.4em 1.7em;
+  text-align: center;
+  position: relative;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    -webkit-box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    -webkit-box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
 }

@@ -3,11 +3,9 @@ import Slider from "react-slick";
 import get from "lodash/get";
 
 import { ProductItem } from "../../Product/ProductItem";
-import { IProductItemProps } from "../../../constants/global";
 import { SliderButton } from "../../SliderButton/SliderButton";
 import fromApi from "../../../services/api/api";
 
-import product from "../../../assets/product.png";
 import styles from "./DailyEssentials.module.scss";
 
 interface IProducSlider {
@@ -30,25 +28,25 @@ const settings = {
         slidesToShow: 3,
         slidesToScroll: 3,
         infinite: true,
-        dots: true
-      }
+        dots: true,
+      },
     },
     {
       breakpoint: 600,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2,
-        initialSlide: 2
-      }
+        initialSlide: 2,
+      },
     },
     {
       breakpoint: 480,
       settings: {
         slidesToShow: 1,
-        slidesToScroll: 1
-      }
-    }
-  ]
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 const SliderProducts: React.FC = () => {
@@ -76,9 +74,7 @@ const SliderProducts: React.FC = () => {
   }, [getProducts]);
 
   return (
-    <div
-      className="slider-wrapper"
-    >
+    <div className="slider-wrapper">
       <Slider {...settings}>
         {products.map((item) => (
           <ProductItem key={item.id} {...item} canAddToCart />
