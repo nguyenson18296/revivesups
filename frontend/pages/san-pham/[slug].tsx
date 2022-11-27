@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
-import Head from "next/head";
 import cx from "classnames";
 import { useCart } from "react-use-cart";
 import { toast } from "react-toastify";
 import get from "lodash/get";
+import { NextSeo } from "next-seo";
 
 import { DailyEssentials } from "../../components/Homepage/DailyEssentials/DailyEssentials";
 import { API_ENDPOINT_URL, DOMAIN_URL } from "../../constants/global";
@@ -38,11 +38,23 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
 
   return (
     <>
-      <Head>
-        <title>
-          Sản phảm - {get(product, "data.attributes.name", "")}
-        </title>
-      </Head>
+      <NextSeo
+         title={`Sản phảm - ${get(product, "data.attributes.name", "")}`}
+         openGraph={{
+          url: DOMAIN_URL + get(product, "data.attributes.thumbnail.data[0].attributes.url", ""),
+          title: get(product, "data.attributes.title", ""),
+          description: `Sản phảm - ${get(product, "data.attributes.name", "")}`,
+          images: [
+            {
+              url: get(product, "data.attributes.thumbnail.data.attributes.url", ""),
+              width: 300,
+              height: 300,
+              alt: get(product, "data.attributes.name", ""),
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       <section>
         <div className={styles.product}>
           <div className={styles.productTop}>

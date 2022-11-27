@@ -1,6 +1,6 @@
 import React from "react";
 import get from "lodash/get";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 import { BlogThumbnail } from "../../components/Blog/BlogThumbnail";
 import { API_ENDPOINT_URL } from "../../constants/global";
@@ -14,9 +14,24 @@ interface IBlogProps {
 const Blogs: React.FC<IBlogProps> = ({ articles }) => {
   return (
     <>
-      <Head>
-        <title>Bài viết</title>
-      </Head>
+      <NextSeo
+        title="Revivesup - Bài viết"
+        description="Blog bài viết"
+        openGraph={{
+          url: "https://cellfit.vn/bai-viet",
+          title: "Revivesup - Bài viết",
+          description: "Blog bài viết",
+          images: [
+            {
+              url: "../../public/header-logo",
+              width: 300,
+              height: 300,
+              alt: 'Revivesup - Bài viết',
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       <div className={styles.wrapper}>
         {(articles?.data || []).map((item: any) => (
           <BlogThumbnail
@@ -39,6 +54,8 @@ const Blogs: React.FC<IBlogProps> = ({ articles }) => {
 export async function getStaticProps() {
   const res = await fetch(`${API_ENDPOINT_URL}/blogs?populate=thumbnail`);
   const data = await res.json();
+
+  console.log("data", data);
 
   if (!data) {
     return {

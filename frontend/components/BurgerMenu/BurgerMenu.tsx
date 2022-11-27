@@ -106,33 +106,7 @@ export const BurgerMenu: React.FC = ({}) => {
               )}
               href="/"
             >
-              Search
-            </a>
-          </li>
-          <li className={styles.drawerMenuItem}>
-            <a
-              id="home"
-              className={cx(
-                "menu-item",
-                styles.menuItem,
-                styles.menuItemSecondary
-              )}
-              href="/"
-            >
-              Contact
-            </a>
-          </li>
-          <li className={styles.drawerMenuItem}>
-            <a
-              id="home"
-              className={cx(
-                "menu-item",
-                styles.menuItem,
-                styles.menuItemSecondary
-              )}
-              href="/"
-            >
-              Register / Login
+              Liên hệ
             </a>
           </li>
         </ul>
