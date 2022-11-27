@@ -1,8 +1,9 @@
 import React from "react";
-import Head from "next/head";
+// import Head from "next/head";
 import get from "lodash/get";
+import { NextSeo } from "next-seo";
 
-import { API_ENDPOINT_URL } from "../../constants/global";
+import { API_ENDPOINT_URL, DOMAIN_URL } from "../../constants/global";
 
 import styles from "./Blogs.module.scss";
 
@@ -11,11 +12,27 @@ interface PostDetail {
 }
 
 const PostDetail: React.FC<PostDetail> = ({ post }) => {
+  console.log("post", DOMAIN_URL + get(post, "data.attributes.thumbnail.data.attributes.url", ""));
+
   return (
     <>
-      <Head>
-        <title>{get(post, "data.attributes.title", "")}</title>
-      </Head>
+      <NextSeo
+         title={get(post, "data.attributes.title", "")}
+         openGraph={{
+          url: `https://cellfit.vn/bai-viet/${get(post, "data.attributes.slug", "")}`,
+          title: get(post, "data.attributes.title", ""),
+          description: "Selling gym stuffs",
+          images: [
+            {
+              url: DOMAIN_URL + get(post, "data.attributes.thumbnail.data.attributes.url", ""),
+              width: 300,
+              height: 300,
+              alt: get(post, "data.attributes.title", ""),
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       <div className={styles.postContainer}>
         <div className={styles.postWrapper}>
           <div className={styles.region}>

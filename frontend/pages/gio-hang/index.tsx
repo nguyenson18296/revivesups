@@ -5,6 +5,7 @@ import Head from "next/head";
 import Link from "next/link";
 import cx from "classnames";
 import { Item, useCart } from "react-use-cart";
+import { NextSeo } from "next-seo";
 
 import { formatCurrency } from "../../utils/utils";
 import { DOMAIN_URL } from "../../constants/global";
@@ -158,7 +159,7 @@ const CartPage: React.FC = () => {
           Giỏ hàng hiện tại của bạn đang trống.
         </p>
         <p>
-          <Link href="/danh-muc/1">
+          <Link href="/danh-muc/tang-can">
               <a className={styles.link}>
                 Tiếp tục mua hàng
               </a>
@@ -170,9 +171,24 @@ const CartPage: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Giỏ hàng</title>
-      </Head>
+      <NextSeo
+        title="Revivesup - Giỏ hàng"
+        description="Revivesup - Giỏ hàng"
+        openGraph={{
+          url: "https://cellfit.vn/thanh-toan",
+          title: "Revivesup - Giỏ hàng",
+          description: "Revivesup - Giỏ hàng",
+          images: [
+            {
+              url: "../../public/header-logo.png",
+              width: 300,
+              height: 300,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       <section>
       <div className={styles.cartPage}>
         <div className={styles.cartContainer}>

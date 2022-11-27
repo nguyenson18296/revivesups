@@ -18,7 +18,7 @@ export const Banner: React.FC = () => {
                   <p>Use code IMMUNE50 to buy one get one 50% off!</p>
                 </div>
                 <div className={styles.buttonWrapper}>
-                  <Link className={styles.button} href="danh-muc/1">
+                  <Link className={styles.button} href="danh-muc/tang-can">
                     <a className={styles.button}>Shop Now</a>
                   </Link>
                 </div>

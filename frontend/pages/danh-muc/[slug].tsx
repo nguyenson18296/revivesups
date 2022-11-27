@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Head from "next/head";
 import get from "lodash/get";
+import { NextSeo } from "next-seo";
 
 import { API_ENDPOINT_URL, IProductItemProps } from "../../constants/global";
 import Categories from "../../components/Product/Categories/Categories";
 import { ProductItem } from "../../components/Product/ProductItem";
+import "../../public/header-logo.png";
 
-import productImage from "../../assets/product-item.png";
 import styles from "./ProductsPage.module.scss";
 
 interface ICategoryProducts {
@@ -33,9 +33,23 @@ const ProductsPage: React.FC<ICategoryProducts> = ({ category }) => {
 
   return (
     <>
-      <Head>
-        <title>Danh mục</title>
-      </Head>
+      <NextSeo
+         title={`Reviveups - Danh mục - ${get(category, "data.attributes.name", "")}`}
+         openGraph={{
+          url: `https://cellfit.vn/bai-viet/${get(category, "data.attributes.slug", "")}`,
+          title: `Reviveups - Danh mục - ${get(category, "data.attributes.name", "")}`,
+          description: `Reviveups - Danh mục - ${get(category, "data.attributes.name", "")}`,
+          images: [
+            {
+              url: "../../public/header-logo.png",
+              width: 300,
+              height: 300,
+              alt: get(category, "data.attributes.name", ""),
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       <section className={styles.collectionSection}>
         <div className={styles.collectionHeader}>
           <div className={styles.collectionHeaderInner}>
