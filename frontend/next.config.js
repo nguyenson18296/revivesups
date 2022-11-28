@@ -5,9 +5,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-    prependData: `@import "main.scss";`
-  }
-}
+    includePaths: [path.join(__dirname, "styles")],
+    prependData: `@import "main.scss";`,
+  },
+  output: "standalone",
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
