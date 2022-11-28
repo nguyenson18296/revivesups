@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Revivesup</title>
+        <title>CellFit</title>
       </Head>
       <Banner />
       <NewProduct />

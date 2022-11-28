@@ -172,12 +172,12 @@ const CartPage: React.FC = () => {
   return (
     <>
       <NextSeo
-        title="Revivesup - Giỏ hàng"
-        description="Revivesup - Giỏ hàng"
+        title="CellFit - Giỏ hàng"
+        description="CellFit - Giỏ hàng"
         openGraph={{
           url: "https://cellfit.vn/thanh-toan",
-          title: "Revivesup - Giỏ hàng",
-          description: "Revivesup - Giỏ hàng",
+          title: "CellFit - Giỏ hàng",
+          description: "CellFit - Giỏ hàng",
           images: [
             {
               url: "../../public/header-logo.png",

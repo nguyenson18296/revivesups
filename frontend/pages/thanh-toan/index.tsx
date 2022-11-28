@@ -35,12 +35,12 @@ const Checkout: React.FC = () => {
   return (
     <>
       <NextSeo
-        title="Revivesup - Thanh toán"
-        description="Revivesup - Thanh toán"
+        title="CellFit - Thanh toán"
+        description="CellFit - Thanh toán"
         openGraph={{
           url: "https://cellfit.vn/thanh-toan",
-          title: "Revivesup - Thanh toán",
-          description: "Revivesup - Thanh toán",
+          title: "CellFit - Thanh toán",
+          description: "CellFit - Thanh toán",
           images: [
             {
               url: "../../public/header-logo.png",

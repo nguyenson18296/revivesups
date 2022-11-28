@@ -15,18 +15,18 @@ const Blogs: React.FC<IBlogProps> = ({ articles }) => {
   return (
     <>
       <NextSeo
-        title="Revivesup - Bài viết"
+        title="CellFit - Bài viết"
         description="Blog bài viết"
         openGraph={{
           url: "https://cellfit.vn/bai-viet",
-          title: "Revivesup - Bài viết",
+          title: "CellFit - Bài viết",
           description: "Blog bài viết",
           images: [
             {
               url: "../../public/header-logo",
               width: 300,
               height: 300,
-              alt: 'Revivesup - Bài viết',
+              alt: 'CellFit - Bài viết',
               type: 'image/jpeg',
             }
           ]

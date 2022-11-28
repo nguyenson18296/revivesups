@@ -13,12 +13,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <NextSeo
-        title="Revivesup - Trang chủ"
-        description="Revivesup - Trang chủ"
+        title="CellFit - Trang chủ"
+        description="CellFit - Trang chủ"
         openGraph={{
           url: "https://cellfit.vn/",
-          title: "Revivesup",
-          description: "Revivesup - Trang chủ",
+          title: "CellFit",
+          description: "CellFit - Trang chủ",
           images: [
             {
               url: "../public/header-logo.png",
