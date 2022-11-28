@@ -32,8 +32,8 @@ const Layout: React.FC<ILayout> = ({
          <div className={styles.socialLinks}>
           <ul>
             <li className={styles.iconLink}>
-              <Link href="https://www.instagram.com/">
-                <a>
+              <Link href="https://instagram.com/cellfitvn?igshid=YmMyMTA2M2Y=">
+                <a target="_blank" rel="noopener noreferrer">
                   <div className={cx(styles.iconWrapper, styles.instagram)}>
 
                   </div>
@@ -41,8 +41,8 @@ const Layout: React.FC<ILayout> = ({
               </Link>
             </li>
             <li className={styles.iconLink}>
-            <Link href="https://instagram.com/cellfitvn?igshid=YmMyMTA2M2Y=">
-              <a>
+            <Link href="https://www.facebook.com/cellfitvn/">
+              <a target="_blank" rel="noopener noreferrer">
                 <div className={cx(styles.iconWrapper, styles.facebook)}>
 
                 </div>
@@ -51,7 +51,7 @@ const Layout: React.FC<ILayout> = ({
             </li>
             <li className={styles.iconLink}>
             <Link href="https://www.youtube.com/CellFitVn">
-              <a href="https://www.youtube.com/CellFitVn">
+              <a target="_blank" rel="noopener noreferrer">
                 <div className={cx(styles.iconWrapper, styles.youtube)}>
 
                 </div>
@@ -60,7 +60,7 @@ const Layout: React.FC<ILayout> = ({
             </li>
             <li className={styles.iconLink}>
             <Link href="https://pin.it/1HEVhoc">
-              <a>
+              <a target="_blank" rel="noopener noreferrer">
                 <div className={cx(styles.iconWrapper, styles.pinterest)}>
 
                 </div>
