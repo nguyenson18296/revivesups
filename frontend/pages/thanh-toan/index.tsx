@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 
 import { CheckoutForm } from "../../components/CheckoutForm/CheckoutForm";
 import { CartReview } from "../../components/CheckoutForm/CartReview";
@@ -34,9 +34,24 @@ const Checkout: React.FC = () => {
   const [checkoutSuccess, setCheckoutSuccess] = useState<boolean>(false);
   return (
     <>
-      <Head>
-        <title>Thanh toán</title>
-      </Head>
+      <NextSeo
+        title="CellFit - Thanh toán"
+        description="CellFit - Thanh toán"
+        openGraph={{
+          url: "https://cellfit.vn/thanh-toan",
+          title: "CellFit - Thanh toán",
+          description: "CellFit - Thanh toán",
+          images: [
+            {
+              url: "../../public/header-logo.png",
+              width: 300,
+              height: 300,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
       <div className={styles.wrap}>
         <main className={styles.main}>
           {checkoutSuccess ? (

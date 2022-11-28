@@ -10,18 +10,20 @@
 
 .collectionGrid {
     display: grid;
-    grid-column-gap: 12px;
-    column-gap: 20px;
-    grid-row-gap: 12px;
-    row-gap: 20px;
-
-    @media (min-width: 60em) {
-        grid-template-columns: repeat(4,1fr);
-    }
+    grid-column-gap: var(--spacing-large);
+    column-gap: var(--spacing-large);
+    grid-row-gap: var(--spacing-large);
+    row-gap: var(--spacing-large);
+    padding-top: var(--spacing-large);
 
     @media (min-width: 45em) {
-        grid-row-gap: 12px;
-        row-gap: 20px;
+        grid-row-gap: 60px;
+        row-gap: 60px;
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    @media (min-width: 60em) {
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
@@ -75,14 +77,13 @@
 .innerFeatures {
     display: flex;
     justify-content: space-evenly;
-    margin: 50px 20px;
     width: 100%;
 
     @media (min-width: 60em) {
         grid-template-columns: repeat(4,1fr);
         display: flex;
         justify-content: space-evenly;
-        margin: 50px;
+        margin: 50px 20px;
         width: 100%;
     }
 }

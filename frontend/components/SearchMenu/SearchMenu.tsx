@@ -43,6 +43,7 @@ export const SearchMenu: React.FC<ISearchMenuProps> = ({
           await fromApi.getPosts(search),
           await fromApi.getProducts(search),
         ]);
+        console.log("products", products);
         setPosts(posts?.data);
         setProducts(products?.data);
       } else {
@@ -55,7 +56,6 @@ export const SearchMenu: React.FC<ISearchMenuProps> = ({
     searchProducts();
   }, [searchProducts]);
 
-
   const renderSearchResult = () => {
     if (products.length > 0 || posts.length > 0) {
       return (
@@ -67,7 +67,7 @@ export const SearchMenu: React.FC<ISearchMenuProps> = ({
               </div>
               {products.map((item: any) => (
                 <a
-                  href={`/san-pham/${item?.id}`}
+                  href={`/san-pham/${get(item, "attributes.slug", "")}`}
                   key={item.id}
                   className={styles.quickSearchResult}
                 >
@@ -102,7 +102,7 @@ export const SearchMenu: React.FC<ISearchMenuProps> = ({
               </div>
               {posts.map((item: any) => (
                 <a
-                  href={`/bai-viet/${item?.id}`}
+                  href={`/bai-viet/${get(item, "attributes.slug", "")}`}
                   key={item.id}
                   className={styles.quickSearchResult}
                 >

@@ -1,5 +1,6 @@
 import { CartProvider } from "react-use-cart";
 import { ToastContainer } from "react-toastify";
+import { NextSeo } from "next-seo";
 
 import Layout from "../components/Layout/Layout";
 
@@ -10,12 +11,32 @@ import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <CartProvider>
+    <>
+      <NextSeo
+        title="CellFit - Trang chủ"
+        description="CellFit - Trang chủ"
+        openGraph={{
+          url: "https://cellfit.vn/",
+          title: "CellFit",
+          description: "CellFit - Trang chủ",
+          images: [
+            {
+              url: "../public/header-logo.png",
+              width: 300,
+              height: 300,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            }
+          ]
+        }}
+      />
+      <CartProvider>
       <ToastContainer />
-      <Layout>
+        <Layout>
         <Component {...pageProps} />
-      </Layout>
-    </CartProvider>
+        </Layout>
+    </CartProvider> 
+    </>
   );
 }
 
