@@ -57,20 +57,20 @@ const PostDetail: React.FC<PostDetail> = ({ post }) => {
   );
 };
 
-// This function gets called at build time
-export async function getStaticPaths() {
-  const res = await fetch(`${API_ENDPOINT_URL}/blogs`);
-  const posts = await res.json();
+// // This function gets called at build time
+// export async function getStaticPaths() {
+//   const res = await fetch(`${API_ENDPOINT_URL}/blogs`);
+//   const posts = await res.json();
 
-  const paths = (posts?.data || []).map((post: any) => ({
-    params: { id: post?.id?.toString(), slug: post?.attributes?.slug },
-  }));
+//   const paths = (posts?.data || []).map((post: any) => ({
+//     params: { id: post?.id?.toString(), slug: post?.attributes?.slug },
+//   }));
 
-  return { paths, fallback: false };
-}
+//   return { paths, fallback: false };
+// }
 
 // This also gets called at build time
-export async function getStaticProps({ params }: { params: any }) {
+export async function getServerSideProps({ params }: { params: any }) {
   const res = await fetch(`${API_ENDPOINT_URL}/blogs/${params?.slug}`);
   const post = await res.json();
 
