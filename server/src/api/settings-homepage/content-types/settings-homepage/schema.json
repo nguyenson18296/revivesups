@@ -1,0 +1,60 @@
+{
+  "kind": "singleType",
+  "collectionName": "settings_homepages",
+  "info": {
+    "singularName": "settings-homepage",
+    "pluralName": "settings-homepages",
+    "displayName": "settings_homepage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "social": {
+      "type": "json"
+    },
+    "banner_text": {
+      "type": "json"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "new_product": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "marquee": {
+      "type": "json"
+    },
+    "new_product_sub_header": {
+      "type": "string"
+    }
+  }
+}

@@ -24,6 +24,7 @@ interface IProductDetail {
 const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
   const { addItem } = useCart();
   const [isSoldOut, setIsSoldOut] = useState<boolean>(false);
+  const [benefits, setBenefits] = useState<string[]>([]);
 
   const onAddItemToCart = useCallback((data: any) => {
     toast.success("Thêm sản phẩm vào giỏ hàng thành công!", {
@@ -34,6 +35,7 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
 
   useEffect(() => {
     setIsSoldOut(get(product, "data.attributes.sold_out", false));
+    setBenefits(get(product, "data.attributes.benefit", "").split(/\n/));
   }, [product]);
 
   return (
@@ -96,39 +98,19 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
                 </div>
                 <div className={styles.productBlock}>
                   <ul className={styles.productChecks}>
-                    <li className={styles.check}>
-                      <Image
-                        src={checkMark}
-                        alt="star"
-                        width={12}
-                        height={12}
-                      />
-                      <span className={styles.checkBenefits}>
-                        Supports Immune Health
-                      </span>
-                    </li>
-                    <li className={styles.check}>
-                      <Image
-                        src={checkMark}
-                        alt="star"
-                        width={12}
-                        height={12}
-                      />
-                      <span className={styles.checkBenefits}>
-                        Promote Respiratory Health
-                      </span>
-                    </li>
-                    <li className={styles.check}>
-                      <Image
-                        src={checkMark}
-                        alt="star"
-                        width={12}
-                        height={12}
-                      />
-                      <span className={styles.checkBenefits}>
-                        Promote Healthy Antioxidant Activity
-                      </span>
-                    </li>
+                    {(benefits || []).map((benefit: string, index: number) => (
+                       <li className={styles.check} key={index}>
+                        <Image
+                          src={checkMark}
+                          alt="star"
+                          width={12}
+                          height={12}
+                        />
+                        <span className={styles.checkBenefits}>
+                          {benefit}
+                        </span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className={styles.productFormControlsGroup}>
@@ -140,14 +122,23 @@ const ProductDetail: React.FC<IProductDetail> = ({ product }) => {
                     <button
                       className={cx(styles.btnSecondary, styles.btnSubmit)}
                       onClick={() => onAddItemToCart({
-                        id: get(product, "data.id", ""),
+                        id: get(product, "data.id", "").toString(),
                         url: `/san-pham/${get(product, "data.id", "")}`,
                         price: get(product, "data.attributes.price", 0),
+                        price_discount: get(product, "attributes.price_discount", ""),
                         thumbnail: get(product, "data.attributes.thumbnail.data[0].attributes.url", ""),
                         name: get(product, "data.attributes.name", "")
                       })}
                     >
-                      Thêm vào giỏ hàng&nbsp;&nbsp;-&nbsp;&nbsp;<span>{formatCurrency(get(product, "data.attributes.price", ""))}</span>
+                      Thêm vào giỏ hàng&nbsp;&nbsp;-&nbsp;&nbsp;
+                      {get(product, "data.attributes.price_discount", "") ? (
+                        <>
+                          <span className={cx(styles.price, styles.originalPrice)}>{formatCurrency(get(product, "data.attributes.price", ""))}</span>
+                          <span className={cx(styles.price, styles.discountPrice)}>{formatCurrency(get(product, "data.attributes.price_discount", ""))}</span>
+                        </>
+                      ) : (
+                        <span className={styles.price}>{formatCurrency(get(product, "data.attributes.price", ""))}</span>
+                      )}
                     </button>
                   )}
                 </div>

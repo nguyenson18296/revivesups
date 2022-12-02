@@ -55,17 +55,19 @@ const SliderProducts: React.FC = () => {
   const getProducts = useCallback(async () => {
     try {
       const response = await fromApi.getLatestProducts();
+      console.log("response", response);
       const formatProducts = response?.data.map((item: any) => ({
         id: item?.id,
         name: get(item, "attributes.name", ""),
         pricing: get(item, "attributes.price", ""),
-        thumbnail: get(item, "attributes.thumbnail.data[0].attributes.url", ""),
+        pricing_discount: get(item, "attributes.price_discount", ""),
+        thumbnail: get(item, "attributes.thumbnail.data", ""),
         url: `san-pham/${get(item, "attributes.slug", "")}`,
         sold_out: get(item, "attributes.sold_out", false),
       }));
       setProducts(formatProducts);
-    } catch (e) {
-      console.error("error", e);
+    } catch (error: any) {
+      throw Error(error);
     }
   }, []);
 

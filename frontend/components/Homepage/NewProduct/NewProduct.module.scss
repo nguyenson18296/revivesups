@@ -101,12 +101,15 @@
     position: relative;
     z-index: 10;
     height: 300px;
-    transform: translateX(10px, 10px);
+    transform: translate(10px, 10px);
+    width: 50%;
 }
 
 .imageSecondary {
     position: relative;
     z-index: 1;
+    width: 50%;
+    height: 300px;
 }
 
 .image {

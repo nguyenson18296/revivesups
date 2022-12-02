@@ -25,8 +25,9 @@ const ProductsPage: React.FC<ICategoryProducts> = ({ category }) => {
       name: get(item, "attributes.name", ""),
       url: `san-pham/${item?.attributes?.slug}`,
       pricing: get(item, "attributes.price", ""),
+      pricing_discount: get(item, "attributes.price_discount", ""),
       sold_out: get(item, "attributes.sold_out", false),
-      thumbnail: get(item, "attributes.thumbnail.data[0].attributes.url", ""),
+      thumbnail: get(item, "attributes.thumbnail.data", ""),
     }));
     setCategoryProducts(formatProducts);
   }, [category]);

@@ -32,6 +32,9 @@ const Blogs: React.FC<IBlogProps> = ({ articles }) => {
           ]
         }}
       />
+      <h1 className={styles.pageTitle}>
+          Bài viết
+        </h1>
       <div className={styles.wrapper}>
         {(articles?.data || []).map((item: any) => (
           <BlogThumbnail
@@ -54,8 +57,6 @@ const Blogs: React.FC<IBlogProps> = ({ articles }) => {
 export async function getStaticProps() {
   const res = await fetch(`${API_ENDPOINT_URL}/blogs?populate=thumbnail`);
   const data = await res.json();
-
-  console.log("data", data);
 
   if (!data) {
     return {
