@@ -1,118 +1,93 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import Image, { StaticImageData } from "next/image";
+import get from "lodash/get";
 
-import mensHealth from "../../../assets/mens-health.png";
-import womensHealth from "../../../assets/womens-health.png";
-import heartHealth from "../../../assets/heart-health.png";
-import organHealth from "../../../assets/organ-health.png";
 import pure from "../../../assets/pure.png";
 import labTested from "../../../assets/lab-tested.png";
 import noFillers from "../../../assets/no-fillers.png";
 import natural from "../../../assets/natural.png";
 
 import styles from "./Categories.module.scss";
+import { DOMAIN_URL } from "../../../constants/global";
 
-interface ICategories {
-  name: string;
-  url: string;
-  thumbnail: StaticImageData;
+interface ICategoriesProps {
+    categories: any;
 }
 
 interface IFeatures {
-    name: string;
-    thumbnail: StaticImageData;
+  name: string;
+  thumbnail: StaticImageData;
 }
 
-const categories: ICategories[] = [
+const features: IFeatures[] = [
   {
-    name: "Men's Health",
-    url: "/collections/mens-health",
-    thumbnail: mensHealth,
+    name: "Thuần khiết",
+    thumbnail: pure,
   },
   {
-    name: "Women's Health",
-    url: "/collections/womans-health",
-    thumbnail: womensHealth,
+    name: "Đã được kiểm chứng",
+    thumbnail: labTested,
   },
   {
-    name: "Heart Health",
-    url: "/collections/heart-health",
-    thumbnail: heartHealth,
+    name: "Không có chất làm đầy",
+    thumbnail: noFillers,
   },
   {
-    name: "Organ Health",
-    url: "/collections/organ-health",
-    thumbnail: organHealth,
+    name: "Thiên nhiên",
+    thumbnail: natural,
   },
 ];
 
-const features: IFeatures[] = [
-    {
-        name: "Pure",
-        thumbnail: pure
-    },
-    {
-        name: "Lab Tested",
-        thumbnail: labTested
-    },
-    {
-        name: "No Fillers",
-        thumbnail: noFillers
-    },
-    {
-        name: "Natural",
-        thumbnail: natural
-    },
-]
-
-export const Categories: React.FC = () => {
+export const Categories: React.FC<ICategoriesProps> = ({
+    categories
+}) => {
   return (
     <>
-        <section className="section">
-            <div className={styles.innerContent}>
-                <div className={styles.collectionGrid}>
-                {categories.map((item, index) => (
-                    <div className={styles.collectionItem} key={index}>
-                    <a href={item.url}>
-                        <Image
-                        className={styles.image}
-                        src={item.thumbnail}
-                        alt={item.name}
-                        />
-                    </a>
-                    <div className={styles.collectionItemFooter}>
-                        <a href={item.url}>{item.name}</a>
-                    </div>
-                    </div>
-                ))}
+      <section className="section">
+        <div className={styles.innerContent}>
+          <div className={styles.collectionGrid}>
+            {categories.map((item: any, index: number) => (
+              <div className={styles.collectionItem} key={index}>
+                <a href={`danh-muc/${item?.attributes?.slug}`}>
+                  <img
+                    className={styles.image}
+                    src={DOMAIN_URL + get(item, "attributes.thumbnail.data.attributes.url")}
+                    alt={item?.attributes?.name}
+                  />
+                </a>
+                <div className={styles.collectionItemFooter}>
+                  <a href={`danh-muc/${item?.attributes?.slug}`}>{item?.attributes?.name}</a>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className={styles.innerFormulatedText}>
+          <div className={styles.subHeading}>
+            <em>
+              <strong>
+                Các chất bổ sung có công thức chuyên nghiệp được thực hiện để
+                phục hồi sức khỏe hàng ngày của bạn.
+              </strong>
+            </em>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className={styles.innerFeatures}>
+          {features.map((item, index) => (
+            <div className={styles.featureItem} key={index}>
+              <div className={styles.inlineFeatureImage}>
+                <Image src={item.thumbnail} alt={item.name} />
+              </div>
+              <div className={styles.inlineContent}>{item.name}</div>
             </div>
-        </section>
-        <section className="section">
-            <div className={styles.innerFormulatedText}>
-                <div className={styles.subHeading}>
-                    <em>
-                        <strong>
-                            Expertly formulated supplements made to revive your everyday health.
-                        </strong>
-                    </em>
-                </div>
-            </div>
-        </section>
-        <section className="section">
-            <div className={styles.innerFeatures}>
-                {features.map((item, index) => (
-                    <div className={styles.featureItem} key={index}>
-                        <div className={styles.inlineFeatureImage}>
-                            <Image src={item.thumbnail} alt={item.name} />
-                        </div>
-                        <div className={styles.inlineContent}>
-                            {item.name}
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </section>
+          ))}
+        </div>
+      </section>
     </>
   );
 };

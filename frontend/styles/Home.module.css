@@ -27,13 +27,6 @@
   }
 }
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-}
-
 .socialLinks {
     display: flex;
     -moz-box-align: center;

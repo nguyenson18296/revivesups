@@ -43,7 +43,6 @@ export const SearchMenu: React.FC<ISearchMenuProps> = ({
           await fromApi.getPosts(search),
           await fromApi.getProducts(search),
         ]);
-        console.log("products", products);
         setPosts(posts?.data);
         setProducts(products?.data);
       } else {

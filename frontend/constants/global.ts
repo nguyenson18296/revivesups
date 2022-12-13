@@ -16,6 +16,7 @@ export interface IProductItemProps {
   name: string;
   url: string;
   pricing: string;
+  pricing_discount: string;
   description?: string;
   thumbnail: StaticImageData;
   sold_out: boolean;

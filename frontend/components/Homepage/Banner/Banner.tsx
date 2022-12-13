@@ -3,23 +3,42 @@ import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import cx from "classnames";
 
+import { DOMAIN_URL } from "../../../constants/global";
+
 import styles from "./Banner.module.scss";
 
-export const Banner: React.FC = () => {
+interface IBannerProps {
+  banner_url: string;
+  bannerData: any; 
+  marquee: any;
+}
+
+const makeRepeated = (arr: any, repeats: number) =>
+  [].concat(...Array.from({ length: repeats }, () => arr));
+
+export const Banner: React.FC<IBannerProps> = ({
+  banner_url, bannerData, marquee
+}) => {
+
   return (
     <>
       <section className={styles.bannerSection}>
         <div className={styles.bannerContainer}>
-          <div className={cx(styles.bannerImg, styles.bannerTransition)}>
+          <div
+            className={cx(styles.bannerImg, styles.bannerTransition)}
+            style={{
+              backgroundImage: `url(${DOMAIN_URL + banner_url})`
+            }}
+          >
             <div className={styles.bannerContent}>
               <div className={styles.bannerContentInner}>
-                <h4 className={styles.heading}>Introducing Immune Defense</h4>
+                <h4 className={styles.heading} style={{ color: bannerData?.data?.text_color}}>{bannerData?.data?.heading}</h4>
                 <div className={styles.subHeading}>
-                  <p>Use code IMMUNE50 to buy one get one 50% off!</p>
+                  <p style={{ color: bannerData?.data?.text_color}}>{bannerData?.data?.sub_header}</p>
                 </div>
                 <div className={styles.buttonWrapper}>
-                  <Link className={styles.button} href="danh-muc/tang-can">
-                    <a className={styles.button}>Shop Now</a>
+                  <Link className={styles.button} href={bannerData?.data?.link_shopping || ""}>
+                    <a className={styles.button}>{bannerData?.data?.button_text}</a>
                   </Link>
                 </div>
               </div>
@@ -29,20 +48,11 @@ export const Banner: React.FC = () => {
       </section>
       <div className={styles.marqueeHorizontal}>
         <Marquee gradient={false}>
-          <div className={styles.marqueeText}>Revive Your Health</div>
-          <div className={styles.marqueeText}>Experience the Difference</div>
-          <div className={styles.marqueeText}>Revive Your Health</div>
-          <div className={styles.marqueeText}>Experience the Difference</div>
-          <div className={styles.marqueeText}>Revive Your Health</div>
-          <div className={styles.marqueeText}>Experience the Difference</div>
-          <div className={styles.marqueeText}>Revive Your Health</div>
-          <div className={styles.marqueeText}>Experience the Difference</div>
-          <div className={styles.marqueeText}>Revive Your Health</div>
-          <div className={styles.marqueeText}>Experience the Difference</div>
-          <div className={styles.marqueeText}>Revive Your Health</div>
-          <div className={styles.marqueeText}>Experience the Difference</div>
-          <div className={styles.marqueeText}>Revive Your Health</div>
-          <div className={styles.marqueeText}>Experience the Difference</div>
+          {(makeRepeated(marquee, 3)).map((item: string, index: number) => (
+            <div key={index} className={styles.marqueeText}>
+              {item}
+            </div>
+          ))}
         </Marquee>
       </div>
     </>

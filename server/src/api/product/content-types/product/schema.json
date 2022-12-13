@@ -44,9 +44,6 @@
       "required": true,
       "default": "$"
     },
-    "benefit": {
-      "type": "richtext"
-    },
     "inventory": {
       "type": "integer",
       "default": 0,
@@ -80,6 +77,9 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "benefit": {
+      "type": "text"
     }
   }
 }

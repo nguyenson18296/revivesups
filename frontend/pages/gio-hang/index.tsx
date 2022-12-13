@@ -19,6 +19,7 @@ interface ICartItemProps {
   name: string;
   url: string;
   price: number;
+  price_discount: number;
   id: string;
   quantity: number;
 }
@@ -28,6 +29,7 @@ const CartItem: React.FC<ICartItemProps> = ({
   name,
   url,
   price,
+  price_discount,
   quantity,
   id,
 }) => {
@@ -61,7 +63,25 @@ const CartItem: React.FC<ICartItemProps> = ({
           <a href={url}>
             <div className={styles.productName}>{name}</div>
           </a>
-          <div className={styles.cartItemPrice}>{formatCurrency(price)}</div>
+          {price_discount ? (
+            <>
+              <div
+                className={cx(
+                  styles.cartItemPrice,
+                  styles.cartItemPriceOriginal
+                )}
+              >
+                {formatCurrency(price)}
+              </div>
+              <div className={styles.cartItemPrice}>
+                {formatCurrency(price_discount)}
+              </div>
+            </>
+          ) : (
+            <div className={styles.cartItemPrice}>{formatCurrency(price)}</div>
+          )}
+          {/* <div className={styles.cartItemPrice}>{formatCurrency(price)}</div>
+          <div className={styles.cartItemPrice}>{formatCurrency(price_discount)}</div> */}
         </div>
         <div className={styles.cartItemQuantity}>
           <div className={styles.cartItemQuantitySelector}>
@@ -92,7 +112,7 @@ const CartItem: React.FC<ICartItemProps> = ({
           </div>
         </div>
         <div className={styles.cartItemTotal}>
-          {formatCurrency(price * quantity)}
+          {formatCurrency((price_discount ? price_discount : price) * quantity)}
         </div>
       </div>
     </div>
@@ -111,63 +131,59 @@ const CartPage: React.FC = () => {
     if (allItems.length > 0) {
       return (
         <div className={styles.cartForm}>
-            <div className={styles.cartFormHeader}>
-              <div className={styles.headerProduct}>
-                Sản phẩm
-              </div>
-              <div className={styles.headerQuantity}>
-                Số lượng
-              </div>
-              <div className={styles.headerTotal}>
-                Số tiền
+          <div className={styles.cartFormHeader}>
+            <div className={styles.headerProduct}>Sản phẩm</div>
+            <div className={styles.headerQuantity}>Số lượng</div>
+            <div className={styles.headerTotal}>Số tiền</div>
+          </div>
+          {(allItems || []).map((item) => (
+            <CartItem
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              url={item.url}
+              price={item.price}
+              price_discount={item.price_discount}
+              thumbnail={item.thumbnail}
+              quantity={item.quantity || 0}
+            />
+          ))}
+          <div className={styles.cartFoorter}>
+            <div className={styles.cartFooterLeft}></div>
+            <div className={styles.cartFooterRight}>
+              <p className={cx("ff-header", styles.totalNumber)}>
+                {formatCurrency(
+                  allItems.reduce(
+                    (prev, curr) =>
+                      prev +
+                      (curr.price_discount
+                        ? curr.price_discount
+                        : curr.price * (curr?.quantity || 0)),
+                    0
+                  )
+                )}
+              </p>
+              <div className={styles.footerAction}>
+                <button className={styles.submit}>
+                  <Link href="/thanh-toan">Thanh toán</Link>
+                </button>
               </div>
             </div>
-              {(allItems || []).map((item) => (
-                <CartItem
-                  key={item.id}
-                  id={item.id}
-                  name={item.name}
-                  url={item.url}
-                  price={item.price}
-                  thumbnail={item.thumbnail}
-                  quantity={item.quantity || 0}
-                />
-              ))}
-              <div className={styles.cartFoorter}>
-                <div className={styles.cartFooterLeft}>
-
-                </div>
-                <div className={styles.cartFooterRight}>
-                    <p className={cx("ff-header", styles.totalNumber)}>
-                      {formatCurrency(allItems.reduce((prev, curr) => prev + (curr.price * (curr?.quantity || 0)), 0))}
-                    </p>
-                    <div className={styles.footerAction}>
-                      <button className={styles.submit}>
-                        <Link href="/thanh-toan">
-                          Thanh toán
-                        </Link>
-                      </button>
-                    </div>
-                </div>
-              </div>
           </div>
-      )
+        </div>
+      );
     }
     return (
       <div className={styles.cartEmpty}>
+        <p>Giỏ hàng hiện tại của bạn đang trống.</p>
         <p>
-          Giỏ hàng hiện tại của bạn đang trống.
-        </p>
-        <p>
-          <Link href="/danh-muc/tang-can">
-              <a className={styles.link}>
-                Tiếp tục mua hàng
-              </a>
+          <Link href="/">
+            <a className={styles.link}>Tiếp tục mua hàng</a>
           </Link>
         </p>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <>
@@ -183,22 +199,22 @@ const CartPage: React.FC = () => {
               url: "../../public/header-logo.png",
               width: 300,
               height: 300,
-              alt: 'Og Image Alt',
-              type: 'image/jpeg',
-            }
-          ]
+              alt: "Og Image Alt",
+              type: "image/jpeg",
+            },
+          ],
         }}
       />
       <section>
-      <div className={styles.cartPage}>
-        <div className={styles.cartContainer}>
-          <header className={cx(styles.cartHeader, "ff-heading")}>
-            Giỏ hàng của bạn
-          </header>
-          {renderCartItems()}
+        <div className={styles.cartPage}>
+          <div className={styles.cartContainer}>
+            <header className={cx(styles.cartHeader, "ff-heading")}>
+              Giỏ hàng của bạn
+            </header>
+            {renderCartItems()}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };

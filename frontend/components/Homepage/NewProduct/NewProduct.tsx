@@ -1,41 +1,57 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Image from "next/image";
+import Link from "next/link";
 import cx from "classnames";
+import get from "lodash/get";
 
-import imagePrimary from "../../../assets/new-product.png";
-import imageSecondary from "../../../assets/new-product-secondary.png";
+import { DOMAIN_URL } from "../../../constants/global";
+
 import styles from "./NewProduct.module.scss";
 
-export const NewProduct: React.FC = () => {
+interface INewProduct {
+  new_product: any;
+  productLink: string;
+  new_product_sub_header: string;
+}
+
+export const NewProduct: React.FC<INewProduct> = ({
+  new_product,
+  productLink,
+  new_product_sub_header
+}) => {
+
   return (
     <section className="section">
       <div className={styles.innerContent}>
         <div className={styles.leftContent}>
           <div className={styles.imageWithTextContainer}>
             <h2 className={cx(styles.textHeading, "ff-heading")}>
-              New Products
+              Sản phẩm mới
             </h2>
             <div className={styles.textSubheading}>
               <p>
-                Introducing Immune Defense! Plus Vitamin K2 & D3 are now
-                available as individual products!
+                {new_product_sub_header}
               </p>
             </div>
-            <a className="button">Shop the Latest</a>
+            <Link href={`/san-pham/${productLink}`}>
+              <a className="button">
+                Mua hàng
+              </a>
+            </Link>
           </div>
         </div>
         <div className={styles.rightContent}>
           <div className={styles.imagePrimary}>
-            <Image
+            <img
               className={cx(styles.image, styles.firstImage)}
-              src={imagePrimary}
+              src={DOMAIN_URL + get(new_product, "data[0].attributes.url", "")}
               alt="image-primary"
             />
           </div>
           <div className={styles.imageSecondary}>
-            <Image
+            <img
               className={cx(styles.image, styles.secondImage)}
-              src={imageSecondary}
+              src={DOMAIN_URL + get(new_product, "data[1].attributes.url", "")}
               alt="image-secondary"
             />
           </div>

@@ -39,7 +39,7 @@ export const CartReview: React.FC = () => {
                       </div>
                     </div>
                     <div className={styles.productPrice}>
-                      {formatCurrency(item.price * item.quantity)}
+                      {formatCurrency((item.price_discount ? item.price_discount : item.price) * item.quantity)}
                     </div>
                   </div> 
                 ))}

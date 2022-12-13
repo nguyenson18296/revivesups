@@ -12,7 +12,6 @@ interface PostDetail {
 }
 
 const PostDetail: React.FC<PostDetail> = ({ post }) => {
-  console.log("post", DOMAIN_URL + get(post, "data.attributes.thumbnail.data.attributes.url", ""));
 
   return (
     <>
