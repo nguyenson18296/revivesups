@@ -29,8 +29,6 @@ export const Footer = () => {
     getSettings();
   }, [getSettings]);
 
-  console.log("settings", settings);
-
   return (
     <footer className={styles.footer}>
       <div className={stylesFooter.siteFooter}>
