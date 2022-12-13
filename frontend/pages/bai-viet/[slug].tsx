@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable @next/next/no-img-element */
+import React, { useMemo } from "react";
 // import Head from "next/head";
 import get from "lodash/get";
 import { NextSeo } from "next-seo";
@@ -12,24 +13,29 @@ interface PostDetail {
 }
 
 const PostDetail: React.FC<PostDetail> = ({ post }) => {
-
   return (
     <>
       <NextSeo
-         title={get(post, "data.attributes.title", "")}
-         openGraph={{
-          url: `https://cellfit.vn/bai-viet/${get(post, "data.attributes.slug", "")}`,
+        title={`CellFit - Bài viết - ${get(post, "data.attributes.title", "")}`}
+        openGraph={{
+          url: `https://cellfit.vn/bai-viet/${get(
+            post,
+            "data.attributes.slug",
+            ""
+          )}`,
           title: get(post, "data.attributes.title", ""),
           description: "Selling gym stuffs",
           images: [
             {
-              url: DOMAIN_URL + get(post, "data.attributes.thumbnail.data.attributes.url", ""),
+              url:
+                DOMAIN_URL +
+                get(post, "data.attributes.thumbnail.data.attributes.url", ""),
               width: 300,
               height: 300,
               alt: get(post, "data.attributes.title", ""),
-              type: 'image/jpeg',
-            }
-          ]
+              type: "image/jpeg",
+            },
+          ],
         }}
       />
       <div className={styles.postContainer}>
@@ -41,6 +47,23 @@ const PostDetail: React.FC<PostDetail> = ({ post }) => {
                   {get(post, "data.attributes.title", "")}
                 </h1>
               </header>
+              <div className={styles.postImage}>
+                {/* <Image
+                  loader={externaImageLoader}
+                  src={get(post, "data.attributes.thumbnail.data.attributes.url", "")}
+                  alt={get(post, "data.attributes.title", "")} width={1802} height={720}
+                /> */}
+                <img
+                  src={`${DOMAIN_URL}${get(
+                    post,
+                    "data.attributes.thumbnail.data.attributes.url",
+                    ""
+                  )}`}
+                  alt={get(post, "data.attributes.title", "")}
+                  width={1802}
+                  height={720}
+                />
+              </div>
               <div className={styles.postContent}>
                 <div
                   dangerouslySetInnerHTML={{

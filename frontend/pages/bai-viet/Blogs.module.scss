@@ -6,6 +6,10 @@
     font-weight: bold;
 }
 
+.postImage {
+    margin-top: 36px;
+}
+
 .wrapper {
     display: grid;
     grid-column-gap: var(--spacing-large);
@@ -16,7 +20,7 @@
     padding: 0 24px;
 
     @media (min-width: 45em) {
-        padding: 0 var(--space-outer);
+        padding: 0 var(--space-outer) 80px;
         grid-row-gap: 60px;
         row-gap: 60px;
         grid-template-columns: repeat(2,1fr);

@@ -8,7 +8,6 @@ import { Banner } from "../components/Homepage/Banner/Banner";
 import { NewProduct } from "../components/Homepage/NewProduct/NewProduct";
 import { Categories } from "../components/Homepage/Categories/Categories";
 import { DailyEssentials } from "../components/Homepage/DailyEssentials/DailyEssentials";
-import { Footer } from "../components/Layout/Footer";
 
 const Home: NextPage = () => {
   const [settings, setSettings] = useState<any>();
@@ -48,7 +47,6 @@ const Home: NextPage = () => {
         />
         <DailyEssentials heading="Daily Essentials" />
       </main>
-      <Footer data={get(settings, "social.data")} />
     </>
   );
 };

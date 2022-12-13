@@ -1,13 +1,36 @@
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import cx from "classnames";
 import get from "lodash/get";
 import Image from "next/image";
 
+import { API_ENDPOINT_URL } from "../../constants/global";
+
 import headerLogo from "../../assets/header-logo.png";
 import styles from "../../styles/Home.module.css";
 import stylesFooter from "./Footer.module.scss";
 
-export const Footer = ({ data }: { data: any }) => {
+export const Footer = () => {
+  const [settings, setSettings] = useState<any>();
+
+  const getSettings = useCallback(async () => {
+    try {
+      const response = await fetch(
+        `${API_ENDPOINT_URL}/settings-homepage?populate=*`
+      );
+      const data = await response.json();
+      setSettings(data?.data?.attributes?.social?.data);
+    } catch (error: any) {
+      throw Error(error);
+    }
+  }, []);
+
+  useEffect(() => {
+    getSettings();
+  }, [getSettings]);
+
+  console.log("settings", settings);
+
   return (
     <footer className={styles.footer}>
       <div className={stylesFooter.siteFooter}>
@@ -27,11 +50,11 @@ export const Footer = ({ data }: { data: any }) => {
             </li>
             <li>
               SỐ ĐIỆN THOẠI:{" "}
-              <strong>{get(data, "contact.phone_number")}</strong>
+              <strong>{get(settings, "contact.phone_number")}</strong>
             </li>
             <li>
               TÀI KHOẢN NGÂN HÀNG:{" "}
-              <strong>{get(data, "contact.bank_number")}</strong>
+              <strong>{get(settings, "contact.bank_number")}</strong>
             </li>
           </ul>
           <ul className={stylesFooter.linksList}>
@@ -54,7 +77,7 @@ export const Footer = ({ data }: { data: any }) => {
           <ul>
             <div style={{ marginBottom: 10 }}>Mạng xã hội</div>
             <li className={styles.iconLink}>
-              <Link href={`${get(data, "social.instagram")}`}>
+              <Link href={`${get(settings, "social.instagram")}`}>
                 <a target="_blank" rel="noopener noreferrer">
                   <div
                     className={cx(styles.iconWrapper, styles.instagram)}
@@ -63,7 +86,7 @@ export const Footer = ({ data }: { data: any }) => {
               </Link>
             </li>
             <li className={styles.iconLink}>
-              <Link href={`${get(data, "social.facebook")}`}>
+              <Link href={`${get(settings, "social.facebook")}`}>
                 <a target="_blank" rel="noopener noreferrer">
                   <div
                     className={cx(styles.iconWrapper, styles.facebook)}
@@ -72,14 +95,14 @@ export const Footer = ({ data }: { data: any }) => {
               </Link>
             </li>
             <li className={styles.iconLink}>
-              <Link href={`${get(data, "social.youtube")}`}>
+              <Link href={`${get(settings, "social.youtube")}`}>
                 <a target="_blank" rel="noopener noreferrer">
                   <div className={cx(styles.iconWrapper, styles.youtube)}></div>
                 </a>
               </Link>
             </li>
             <li className={styles.iconLink}>
-              <Link href={`${get(data, "social.pinterest")}`}>
+              <Link href={`${get(settings, "social.pinterest")}`}>
                 <a target="_blank" rel="noopener noreferrer">
                   <div
                     className={cx(styles.iconWrapper, styles.pinterest)}
