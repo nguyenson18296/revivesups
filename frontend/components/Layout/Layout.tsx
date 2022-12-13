@@ -3,6 +3,7 @@ import cx from "classnames";
 import Link from "next/link";
 
 import { Header } from "../Homepage/Header/Header";
+import { Footer } from "./Footer";
 import styles from "../../styles/Home.module.css";
 
 interface ILayout {
@@ -21,7 +22,10 @@ const Layout: React.FC<ILayout> = ({
           <link rel="icon" href="/header-logo.png" />
         </Head>
         <Header />
-        {children}
+        <div className={styles.containerBody}>
+          {children}
+        </div>
+        <Footer />
       </div>
     </>
   );

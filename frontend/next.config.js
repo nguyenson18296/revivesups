@@ -8,6 +8,16 @@ const nextConfig = {
     includePaths: [path.join(__dirname, "styles")],
     prependData: `@import "main.scss";`,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'api.cellfit.vn',
+        port: '',
+        pathname: '/image/upload/**',
+      },
+    ],
+  },
   async rewrites() {
     return [
       {

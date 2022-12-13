@@ -54,7 +54,7 @@ const Blogs: React.FC<IBlogProps> = ({ articles }) => {
   );
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(`${API_ENDPOINT_URL}/blogs?populate=thumbnail`);
   const data = await res.json();
 

@@ -55,7 +55,6 @@ const SliderProducts: React.FC = () => {
   const getProducts = useCallback(async () => {
     try {
       const response = await fromApi.getLatestProducts();
-      console.log("response", response);
       const formatProducts = response?.data.map((item: any) => ({
         id: item?.id,
         name: get(item, "attributes.name", ""),

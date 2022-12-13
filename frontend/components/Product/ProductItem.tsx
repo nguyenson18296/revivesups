@@ -127,7 +127,7 @@ export const ProductItem: React.FC<IProductItem> = ({
         </Link>
       </div>
       <div className={styles.productItemText}>
-        <Link href={url}>
+        <Link href={`/${url}`}>
           <a>
             <h4 className={styles.productItemTitle}>{name}</h4>
           </a>
